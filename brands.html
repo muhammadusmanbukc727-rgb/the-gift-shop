@@ -1,0 +1,1428 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>The Gift Shop — Gifts</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Playfair+Display:wght@700&display=swap"
+    rel="stylesheet">
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/common.css">
+  <style>
+    .row.mb-4.filter-row-class {
+      margin-top: 40px !important;
+      justify-content: center;
+    }
+
+    .row {
+      margin: 0 !important;
+    }
+
+    /* (Your existing CSS, unchanged) */
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #fff;
+      color: #222;
+      padding-top: 70px;
+    }
+
+    .cart-overlay {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: rgba(255, 111, 0, 0.9);
+      color: #fff;
+      border-radius: 50%;
+      padding: 8px 10px;
+      cursor: pointer;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .position-relative:hover .cart-overlay {
+      opacity: 1;
+    }
+
+    /* .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%2833,37,41,0.7%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+    } */
+
+    .product-card {
+      margin-bottom: 20px;
+
+    }
+
+    .card {
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      transition: all 0.3s ease;
+      width: 260px;
+      height: 330px;
+      margin: 15px auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      cursor: pointer;
+      overflow: hidden;
+
+    }
+
+
+    .card img {
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover img {
+      transform: scale(1.05);
+    }
+
+    .card-img-top {
+      border-radius: 12px 12px 0 0;
+      object-fit: cover;
+      height: 220px;
+    }
+
+    .card:hover .cart-hover-btn {
+      opacity: 1;
+    }
+
+
+    .card-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #333;
+      margin: 8px 0;
+    }
+
+    .card-price {
+      color: #ff6f00;
+      font-weight: bold;
+      font-size: 1rem;
+      margin-bottom: 10px;
+    }
+
+
+    .cart-hover-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: orange;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: 2;
+    }
+
+
+    .compare-toggle {
+      position: relative;
+      display: inline-block;
+      width: 50px;
+      height: 25px;
+      margin-top: 6px;
+    }
+
+    .compare-toggle input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      transition: .4s;
+      border-radius: 25px;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 19px;
+      width: 19px;
+      left: 3px;
+      bottom: 3px;
+      background-color: white;
+      transition: .4s;
+      border-radius: 50%;
+    }
+
+    .compare-toggle input:checked+.slider {
+      background-color: #ff6f00;
+    }
+
+    .compare-toggle input:checked+.slider:before {
+      transform: translateX(25px);
+    }
+
+
+
+    /* .compare-btn:hover {
+      background-color: #e65100;
+    } */
+
+
+    .bg-img {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+      filter: brightness(0.9);
+    }
+
+    .content-box {
+      background: rgba(255, 255, 255, 0.85);
+      padding: 40px;
+      border-radius: 15px;
+      max-width: 900px;
+      margin: 30px auto;
+      text-align: center;
+      box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    body {
+      background: url('your-high-res-image.jpg') no-repeat center center fixed;
+      background-size: cover;
+      image-rendering: -webkit-optimize-contrast;
+      image-rendering: crisp-edges;
+      background-attachment: fixed;
+    }
+
+    .trend {
+      background: rgba(255, 252, 252, 0.719);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 24px;
+      font-weight: bold;
+      color: #333;
+      padding: 10px 20px;
+      border-radius: 8px;
+
+      margin-top: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <img src="images/premium_photo-1664274132563-58233267f8e8 (1).avif" class="bg-img" alt="Gift Background">
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container-fluid">
+      <!-- Logo -->
+      <a class="navbar-brand" href="../homepage/index.html">
+        <img src="../homepage/images/The Gift Shop Logo00 Design.png" alt="The Gift Shop Logo" height="80" width="150">
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0 gap-3">
+          <li class="nav-item"><a class="nav-link active" href="../homepage/index.html">Home</a></li>
+          <!-- Gifts Dropdown -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle active" href="../homepage/gift.html" role="button"
+              data-bs-toggle="dropdown">Gifts</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item category-link" data-category="all" href="gift.html">All</a></li>
+              <li><a class="dropdown-item" href="../homepage/gift.html?cat=chocolate">Chocolate</a></li>
+              <li><a class="dropdown-item" href="../homepage/gift.html?cat=hamper">Hamper</a></li>
+              <li><a class="dropdown-item" href="../homepage/gift.html?cat=flowe">Flower</a></li>
+              <li><a class="dropdown-item" href="../homepage/gift.html?cat=jewellery">Jewellery</a></li>
+              <li><a class="dropdown-item" href="../homepage/gift.html?cat=watchs">Watchs</a></li>
+              <li><a class="dropdown-item" href="../homepage/gift.html?cat=cake">Cake</a></li>
+              <li><a class="dropdown-item" href="../homepage/gift.html?cat=birthdaycard">Birthdaycards</a></li>
+              <li><a class="dropdown-item" href="../homepage/gift.html?cat=perfume">Perfume</a></li>
+            </ul>
+          </li>
+          <!-- brands  -->
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle active" href="../gift/brands.html" role="button"
+              data-bs-toggle="dropdown">Brands</a>
+            <ul class="dropdown-menu">
+              <!-- Perfumes -->
+              <li>
+                <h6 class="dropdown-header">Perfumes</h6>
+              </li>
+              <li><a class="dropdown-item category-link" href="../homepage/brands.html?cat=perfumejm">J. (For Men)</a>
+              </li>
+              <li><a class="dropdown-item category-link" href="../homepage/brands.html?cat=perfumejf">J. (For
+                  Women)</a>
+              </li>
+              <li><a class="dropdown-item category-link" href="../homepage/brands.html?cat=perfumebm">Bonanza
+                  (Men)</a>
+              </li>
+              <li><a class="dropdown-item category-link" href="../homepage/brands.html?cat=perfumebf">Bonanza
+                  (Women)</a>
+              </li>
+
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+
+              <!-- Watches -->
+              <li>
+                <h6 class="dropdown-header">Watches</h6>
+              </li>
+              <li><a class="dropdown-item category-link" href="../homepage/brands.html?cat=watchsz">Zero Lifestyle</a>
+              <li><a class="dropdown-item category-link" href="../homepage/brands.html?cat=watchss">Seveston</a></li>
+          </li>
+
+          <li>
+            <hr class="dropdown-divider">
+          </li>
+
+          <!-- Mobiles -->
+          <li>
+            <h6 class="dropdown-header">Mobiles</h6>
+          </li>
+          <li><a class="dropdown-item category-link" href="../homepage/brands.html?cat=iphone">iPhone</a></li>
+          <li><a class="dropdown-item category-link" href="../homepage/brands.html?cat=samsung">Samsung</a></li>
+
+          <li>
+            <hr class="dropdown-divider">
+          </li>
+
+          <!-- All Option -->
+          <li><a class="dropdown-item category-link fw-semibold text-center" href="../homepage/brands.html">View
+              All Brands</a></li>
+        </ul>
+        </li>
+
+        <!-- Brand Comparison -->
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle active" href="brandcomparison.html" role="button"
+            data-bs-toggle="dropdown">Brands Comparison</a>
+          <ul class="dropdown-menu">
+            <!-- Perfumes -->
+            <li>
+              <h6 class="dropdown-header">Perfumes</h6>
+            </li>
+            <li><a class="dropdown-item category-link" href="../homepage/brands.html?cat=perfumejm">J. (For Men)</a>
+            </li>
+            <li><a class="dropdown-item category-link" href="../homepage/brands.html?cat=perfumejf">J. (For Women)</a>
+            </li>
+            <li><a class="dropdown-item category-link" href="../homepahe/brands.html?cat=perfumebm">Bonanza (Men)</a>
+            </li>
+            <li><a class="dropdown-item category-link" href="../homepage/brands.html?cat=perfumebf">Bonanza
+                (Women)</a>
+            </li>
+
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <!-- Watches -->
+            <li>
+              <h6 class="dropdown-header">Watches</h6>
+            </li>
+            <li><a class="dropdown-item category-link" href="../homepage/brands.html?cat=watchsz">Zero Lifestyle</a>
+            <li><a class="dropdown-item category-link" href="../homepage/brands.html?cat=watchss">Seveston</a></li>
+        </li>
+
+        <li>
+          <hr class="dropdown-divider">
+        </li>
+
+        <!-- Mobiles -->
+        <li>
+          <h6 class="dropdown-header">Mobiles</h6>
+        </li>
+        <li><a class="dropdown-item category-link" href="../homepage/brands.html?cat=iphone">iPhone</a></li>
+        <li><a class="dropdown-item category-link" href="../homepage/brands.html?cat=samsung">Samsung</a></li>
+
+        <li>
+          <hr class="dropdown-divider">
+        </li>
+
+        <!-- All Option -->
+        <li><a class="dropdown-item category-link fw-semibold text-center" href="../homepage/brands.html">View
+            All Comparisons</a></li>
+        </ul>
+        </li>
+
+        <li class="nav-item"><a class="nav-link" href="../homepage/blog.html">Blog</a></li>
+        <li class="nav-item"><a class="nav-link" href="../homepage/help.html">Help</a></li>
+        <li class="nav-item"><a class="nav-link" href="../homepage/about.html">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="../homepage/contact.html">Contact</a></li>
+        </ul>
+
+        <!-- Cart Icon -->
+        <span class="cart-count" id="cart-count" data-bs-toggle="offcanvas" data-bs-target="#cartCanvas">
+          <i class="fas fa-shopping-cart"></i> (<span id="cart-num">0</span>)
+        </span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Search & Filter -->
+  <div class="row mb-4 justify-content-center align-items-center g-2 filter-row-class">
+    <!-- Search Box -->
+    <div class="col-md-5 col-sm-10">
+      <input type="text" id="searchBox" class="form-control shadow-sm" placeholder="🔍 Search products..."
+        style=" border: 1px solid #d1b3ff;">
+    </div>
+
+    <!-- Category Filter -->
+    <div class="col-md-5 col-sm-10">
+      <select id="categoryFilter" class="form-select shadow-sm" style=" border: 1px solid #d1b3ff;">
+        <option value="all">All Brands</option>
+
+        <optgroup label="Perfumes">
+          <option value="perfumejm">J. (Men)</option>
+          <option value="perfumejf">J. (Women)</option>
+          <option value="perfumebm">Bonanza (Men)</option>
+          <option value="perfumebf">Bonanza (Women)</option>
+        </optgroup>
+
+        <optgroup label="Watches">
+          <option value="watchss">Seveston</option>
+          <option value="watchsz">Zero Lifestyle</option>
+        </optgroup>
+
+        <optgroup label="Mobiles">
+          <option value="iphone">iPhone</option>
+          <option value="samsung">Samsung</option>
+        </optgroup>
+      </select>
+    </div>
+  </div>
+
+
+  <!-- Compare Button -->
+  <!-- <button class="btn compare-btn" onclick="showComparison()">Compare (<span id="compareCount">0</span>)</button> -->
+
+  <!-- Cart Offcanvas -->
+  <div class="offcanvas offcanvas-end" tabindex="-1" id="cartCanvas">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title">Your Cart</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+    </div>
+    <div class="offcanvas-body">
+      <div id="cartItems"></div>
+      <div class="mt-3">Total: PKR <strong id="cartTotal">0</strong></div>
+      <div class="mt-3 d-flex gap-2">
+        <button class="btn btn-danger btn-sm" onclick="clearCart()">Clear</button>
+        <button class="btn btn-success btn-sm" onclick="goToCheckout()">Checkout</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Comparison Modal -->
+  <!-- <div class="modal fade" id="compareModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Comparison</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body" id="compareModalBody"></div>
+      </div>
+    </div>
+  </div> -->
+
+  <div class="container px-5" id="parent">
+    <h1 class="mb-4 trend">Our Gift Collection</h1>
+
+  </div>
+  <div class="container mt-4">
+    <!-- Product Grid -->
+    <div class="row" id="productContainer">
+
+      <!-- Perfumes Section -->
+
+      <div class="row">
+        <!-- Perfume 1 -->
+        <div class="col-md-3 product-card" data-category="perfumejm">
+          <div class="card">
+            <img src="images/perfume1.webp" class="card-img-top" alt="Janan Musk"
+              onclick="location.href='product.html?id=perfume1'">
+            <button class="cart-hover-btn" onclick="event.stopPropagation(); addToCart('perfume1','Janan Musk',2800)"><i
+                class="bi bi-cart"></i></button>
+            <div class="card-body text-center">
+              <h5 class="card-title">Janan Musk</h5>
+              <p class="text-danger">PKR 2,800</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Perfume 2 -->
+        <div class="col-md-3 product-card" data-category="perfumejm">
+          <div class="card">
+            <img src="images/perfume2.webp" class="card-img-top" alt="Exclusive Intense"
+              onclick="location.href='product.html?id=perfume2'">
+            <button class="cart-hover-btn"
+              onclick="event.stopPropagation(); addToCart('perfume2','Exclusive Intense',3200)"><i
+                class="bi bi-cart"></i></button>
+            <div class="card-body text-center">
+              <h5 class="card-title">Exclusive Intense</h5>
+              <p class="text-danger">PKR 3,200</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Perfume 3 -->
+        <div class="col-md-3 product-card" data-category="perfumejm">
+          <div class="card">
+            <img src="images/perfume3.webp" class="card-img-top" alt="Janan Vanilla"
+              onclick="location.href='product.html?id=perfume3'">
+            <button class="cart-hover-btn"
+              onclick="event.stopPropagation(); addToCart('perfume3','Janan Vanilla',3500)"><i
+                class="bi bi-cart"></i></button>
+            <div class="card-body text-center">
+              <h5 class="card-title">Janan Vanilla</h5>
+              <p class="text-danger">PKR 3,500</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Perfume 4 -->
+        <div class="col-md-3 product-card" data-category="perfumejm">
+          <div class="card">
+            <img src="images/perfume4.webp" class="card-img-top" alt="Zarar"
+              onclick="location.href='product.html?id=perfume4'">
+            <button class="cart-hover-btn" onclick="event.stopPropagation(); addToCart('perfume4','Zarar',3000)"><i
+                class="bi bi-cart"></i></button>
+            <div class="card-body text-center">
+              <h5 class="card-title">Zarar</h5>
+              <p class="text-danger">PKR 3,000</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Perfume 5 -->
+        <div class="col-md-3 product-card" data-category="perfumejf">
+          <div class="card">
+            <img src="images/perfume5.webp" class="card-img-top" alt="Janan Pour Femme"
+              onclick="location.href='product.html?id=perfume5'">
+            <button class="cart-hover-btn"
+              onclick="event.stopPropagation(); addToCart('perfume5','Janan Pour Femme',2800)"><i
+                class="bi bi-cart"></i></button>
+            <div class="card-body text-center">
+              <h5 class="card-title">Janan Pour Femme</h5>
+              <p class="text-danger">PKR 2,800</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Perfume 6 -->
+        <div class="col-md-3 product-card" data-category="perfumejf">
+          <div class="card">
+            <img src="images/perfume6.webp" class="card-img-top" alt="The Dutchess"
+              onclick="location.href='product.html?id=perfume6'">
+            <button class="cart-hover-btn"
+              onclick="event.stopPropagation(); addToCart('perfume6','The Dutchess',3300)"><i
+                class="bi bi-cart"></i></button>
+            <div class="card-body text-center">
+              <h5 class="card-title">The Dutchess</h5>
+              <p class="text-danger">PKR 3,300</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Perfume 7 -->
+        <div class="col-md-3 product-card" data-category="perfumejf">
+          <div class="card">
+            <img src="images/perfume7.webp" class="card-img-top" alt="Flirty Body Mist"
+              onclick="location.href='product.html?id=perfume7'">
+            <button class="cart-hover-btn"
+              onclick="event.stopPropagation(); addToCart('perfume7','Flirty Body Mist',1500)"><i
+                class="bi bi-cart"></i></button>
+            <div class="card-body text-center">
+              <h5 class="card-title">Flirty Body Mist</h5>
+              <p class="text-danger">PKR 1,500</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Perfume 8 -->
+        <div class="col-md-3 product-card" data-category="perfumejf">
+          <div class="card">
+            <img src="images/perfume8.webp" class="card-img-top" alt="Wasim Akram 502 For Her"
+              onclick="location.href='product.html?id=perfume8'">
+            <button class="cart-hover-btn"
+              onclick="event.stopPropagation(); addToCart('perfume8','Wasim Akram 502 For Her',3600)"><i
+                class="bi bi-cart"></i></button>
+            <div class="card-body text-center">
+              <h5 class="card-title">Wasim Akram 502 For Her</h5>
+              <p class="text-danger">PKR 3,600</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Perfume 9 -->
+        <div class="col-md-3 product-card" data-category="perfumebm">
+          <div class="card">
+            <img src="images/perfume9.webp" class="card-img-top" alt="VIP For Men"
+              onclick="location.href='product.html?id=perfume9'">
+            <button class="cart-hover-btn"
+              onclick="event.stopPropagation(); addToCart('perfume9','VIP For Men',3400)"><i
+                class="bi bi-cart"></i></button>
+            <div class="card-body text-center">
+              <h5 class="card-title">VIP For Men</h5>
+              <p class="text-danger">PKR 3,400</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Perfume 10 -->
+        <div class="col-md-3 product-card" data-category="perfumebm">
+          <div class="card">
+            <img src="images/perfume10.webp" class="card-img-top" alt="Maestro For Him"
+              onclick="location.href='product.html?id=perfume10'">
+            <button class="cart-hover-btn"
+              onclick="event.stopPropagation(); addToCart('perfume10','Maestro For Him',3100)"><i
+                class="bi bi-cart"></i></button>
+            <div class="card-body text-center">
+              <h5 class="card-title">Maestro For Him</h5>
+              <p class="text-danger">PKR 3,100</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Perfume 11 -->
+        <div class="col-md-3 product-card" data-category="perfumebm">
+          <div class="card">
+            <img src="images/perfume11.webp" class="card-img-top" alt="Notorious Intense"
+              onclick="location.href='product.html?id=perfume11'">
+            <button class="cart-hover-btn"
+              onclick="event.stopPropagation(); addToCart('perfume11','Notorious Intense',3500)"><i
+                class="bi bi-cart"></i></button>
+            <div class="card-body text-center">
+              <h5 class="card-title">Notorious Intense</h5>
+              <p class="text-danger">PKR 3,500</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Perfume 12 -->
+        <div class="col-md-3 product-card" data-category="perfumebm">
+          <div class="card">
+            <img src="images/perfume12.webp" class="card-img-top" alt="The Master"
+              onclick="location.href='product.html?id=perfume12'">
+            <button class="cart-hover-btn"
+              onclick="event.stopPropagation(); addToCart('perfume12','The Master',3300)"><i
+                class="bi bi-cart"></i></button>
+            <div class="card-body text-center">
+              <h5 class="card-title">The Master</h5>
+              <p class="text-danger">PKR 3,300</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Perfume 13 -->
+        <div class="col-md-3 product-card" data-category="perfumebf">
+          <div class="card">
+            <img src="images/perfume13.webp" class="card-img-top" alt="Queen"
+              onclick="location.href='product.html?id=perfume13'">
+            <button class="cart-hover-btn" onclick="event.stopPropagation(); addToCart('perfume13','Queen',3600)"><i
+                class="bi bi-cart"></i></button>
+            <div class="card-body text-center">
+              <h5 class="card-title">Queen</h5>
+              <p class="text-danger">PKR 3,600</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Perfume 14 -->
+        <div class="col-md-3 product-card" data-category="perfumebf">
+          <div class="card">
+            <img src="images/perfume14.webp" class="card-img-top" alt="Celestial"
+              onclick="location.href='product.html?id=perfume14'">
+            <button class="cart-hover-btn" onclick="event.stopPropagation(); addToCart('perfume14','Celestial',3700)"><i
+                class="bi bi-cart"></i></button>
+            <div class="card-body text-center">
+              <h5 class="card-title">Celestial</h5>
+              <p class="text-danger">PKR 3,700</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Perfume 15 -->
+        <div class="col-md-3 product-card" data-category="perfumebf">
+          <div class="card">
+            <img src="images/perfume15.webp" class="card-img-top" alt="Noor"
+              onclick="location.href='product.html?id=perfume15'">
+            <button class="cart-hover-btn" onclick="event.stopPropagation(); addToCart('perfume15','Noor',3400)"><i
+                class="bi bi-cart"></i></button>
+            <div class="card-body text-center">
+              <h5 class="card-title">Noor</h5>
+              <p class="text-danger">PKR 3,400</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Perfume 16 -->
+        <div class="col-md-3 product-card" data-category="perfumebf">
+          <div class="card">
+            <img src="images/perfume16.webp" class="card-img-top" alt="Mi Amour"
+              onclick="location.href='product.html?id=perfume16'">
+            <button class="cart-hover-btn" onclick="event.stopPropagation(); addToCart('perfume16','Mi Amour',3600)"><i
+                class="bi bi-cart"></i></button>
+            <div class="card-body text-center">
+              <h5 class="card-title">Mi Amour</h5>
+              <p class="text-danger">PKR 3,600</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+      <!-- Mobiles -->
+      <div class="row">
+
+        <!-- Samsung Mobiles -->
+
+        <!-- Samsung 1 -->
+        <div class="col-md-3 product-card" data-category="samsung">
+          <div class="card">
+            <img src="images/samsung1.webp" class="card-img-top" alt="Galaxy Z Fold5"
+              onclick="location.href='product.html?id=samsung1'">
+            <button class="cart-hover-btn"
+              onclick="event.stopPropagation(); addToCart('samsung1','Galaxy Z Fold5',399999)">
+              <i class="bi bi-cart"></i>
+            </button>
+            <div class="card-body">
+              <h5 class="card-title">Galaxy Z Fold5</h5>
+              <p class="text-danger">PKR 399,999</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Samsung 2 -->
+        <div class="col-md-3 product-card" data-category="samsung">
+          <div class="card">
+            <img src="images/samsung2.webp" class="card-img-top" alt="Galaxy S23 Ultra"
+              onclick="location.href='product.html?id=samsung2'">
+            <button class="cart-hover-btn"
+              onclick="event.stopPropagation(); addToCart('samsung2','Galaxy S23 Ultra',489999)">
+              <i class="bi bi-cart"></i>
+            </button>
+            <div class="card-body">
+              <h5 class="card-title">Galaxy S23 Ultra</h5>
+              <p class="text-danger">PKR 489,999</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Samsung 3 -->
+        <div class="col-md-3 product-card" data-category="samsung">
+          <div class="card">
+            <img src="images/samsung3.webp" class="card-img-top" alt="Galaxy S21"
+              onclick="location.href='product.html?id=samsung3'">
+            <button class="cart-hover-btn" onclick="event.stopPropagation(); addToCart('samsung3','Galaxy S21',125000)">
+              <i class="bi bi-cart"></i>
+            </button>
+            <div class="card-body">
+              <h5 class="card-title">Galaxy S21</h5>
+              <p class="text-danger">PKR 125,000</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Samsung 4 -->
+        <div class="col-md-3 product-card" data-category="samsung">
+          <div class="card">
+            <img src="images/samsung4.webp" class="card-img-top" alt="Galaxy S21 Ultra"
+              onclick="location.href='product.html?id=samsung4'">
+            <button class="cart-hover-btn"
+              onclick="event.stopPropagation(); addToCart('samsung4','Galaxy S21 Ultra',180000)">
+              <i class="bi bi-cart"></i>
+            </button>
+            <div class="card-body">
+              <h5 class="card-title">Galaxy S21 Ultra</h5>
+              <p class="text-danger">PKR 180,000</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Samsung 5 -->
+        <div class="col-md-3 product-card" data-category="samsung">
+          <div class="card">
+            <img src="images/samsung5.webp" class="card-img-top" alt="Galaxy Note 20 Ultra"
+              onclick="location.href='product.html?id=samsung5'">
+            <button class="cart-hover-btn"
+              onclick="event.stopPropagation(); addToCart('samsung5','Galaxy Note 20 Ultra',155000)">
+              <i class="bi bi-cart"></i>
+            </button>
+            <div class="card-body">
+              <h5 class="card-title">Galaxy Note 20 Ultra</h5>
+              <p class="text-danger">PKR 155,000</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Samsung 6 -->
+        <div class="col-md-3 product-card" data-category="samsung">
+          <div class="card">
+            <img src="images/samsung6.webp" class="card-img-top" alt="Galaxy Z Fold 3"
+              onclick="location.href='product.html?id=samsung6'">
+            <button class="cart-hover-btn"
+              onclick="event.stopPropagation(); addToCart('samsung6','Galaxy Z Fold 3',220000)">
+              <i class="bi bi-cart"></i>
+            </button>
+            <div class="card-body">
+              <h5 class="card-title">Galaxy Z Fold 3</h5>
+              <p class="text-danger">PKR 220,000</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Samsung 7 -->
+        <div class="col-md-3 product-card" data-category="samsung">
+          <div class="card">
+            <img src="images/samsung7.webp" class="card-img-top" alt="Galaxy Z Flip 3"
+              onclick="location.href='product.html?id=samsung7'">
+            <button class="cart-hover-btn"
+              onclick="event.stopPropagation(); addToCart('samsung7','Galaxy Z Flip 3',185000)">
+              <i class="bi bi-cart"></i>
+            </button>
+            <div class="card-body">
+              <h5 class="card-title">Galaxy Z Flip 3</h5>
+              <p class="text-danger">PKR 185,000</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Samsung 8 -->
+        <div class="col-md-3 product-card" data-category="samsung">
+          <div class="card">
+            <img src="images/samsung8.webp" class="card-img-top" alt="Galaxy A72"
+              onclick="location.href='product.html?id=samsung8'">
+            <button class="cart-hover-btn" onclick="event.stopPropagation(); addToCart('samsung8','Galaxy A72',78000)">
+              <i class="bi bi-cart"></i>
+            </button>
+            <div class="card-body">
+              <h5 class="card-title">Galaxy A72</h5>
+              <p class="text-danger">PKR 78,000</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- iPhones -->
+
+        <!-- iPhone 1 -->
+        <div class="col-md-3 product-card" data-category="iphone">
+          <div class="card">
+            <img src="images/iphone1.jpeg" class="card-img-top" alt="iPhone 14"
+              onclick="location.href='product.html?id=iphone1'">
+            <button class="cart-hover-btn" onclick="event.stopPropagation(); addToCart('iphone1','iPhone 14',250000)">
+              <i class="bi bi-cart"></i>
+            </button>
+            <div class="card-body">
+              <h5 class="card-title">iPhone 14</h5>
+              <p class="text-danger">PKR 250,000</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- iPhone 2 -->
+        <div class="col-md-3 product-card" data-category="iphone">
+          <div class="card">
+            <img src="images/iphone2.jpeg" class="card-img-top" alt="iPhone 14 Plus"
+              onclick="location.href='product.html?id=iphone2'">
+            <button class="cart-hover-btn"
+              onclick="event.stopPropagation(); addToCart('iphone2','iPhone 14 Plus',280000)">
+              <i class="bi bi-cart"></i>
+            </button>
+            <div class="card-body">
+              <h5 class="card-title">iPhone 14 Plus</h5>
+              <p class="text-danger">PKR 280,000</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- iPhone 3 -->
+        <div class="col-md-3 product-card" data-category="iphone">
+          <div class="card">
+            <img src="images/iphone3.jpeg" class="card-img-top" alt="iPhone 14 Pro"
+              onclick="location.href='product.html?id=iphone3'">
+            <button class="cart-hover-btn"
+              onclick="event.stopPropagation(); addToCart('iphone3','iPhone 14 Pro',370000)">
+              <i class="bi bi-cart"></i>
+            </button>
+            <div class="card-body">
+              <h5 class="card-title">iPhone 14 Pro</h5>
+              <p class="text-danger">PKR 370,000</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- iPhone 4 -->
+        <div class="col-md-3 product-card" data-category="iphone">
+          <div class="card">
+            <img src="images/iphone4.jpeg" class="card-img-top" alt="iPhone 14 Pro Max"
+              onclick="location.href='product.html?id=iphone4'">
+            <button class="cart-hover-btn"
+              onclick="event.stopPropagation(); addToCart('iphone4','iPhone 14 Pro Max',390000)">
+              <i class="bi bi-cart"></i>
+            </button>
+            <div class="card-body">
+              <h5 class="card-title">iPhone 14 Pro Max</h5>
+              <p class="text-danger">PKR 390,000</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- iPhone 5 -->
+        <div class="col-md-3 product-card" data-category="iphone">
+          <div class="card">
+            <img src="images/iphone5.jpeg" class="card-img-top" alt="iPhone 15"
+              onclick="location.href='product.html?id=iphone5'">
+            <button class="cart-hover-btn" onclick="event.stopPropagation(); addToCart('iphone5','iPhone 15',320000)">
+              <i class="bi bi-cart"></i>
+            </button>
+            <div class="card-body">
+              <h5 class="card-title">iPhone 15</h5>
+              <p class="text-danger">PKR 320,000</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- iPhone 6 -->
+        <div class="col-md-3 product-card" data-category="iphone">
+          <div class="card">
+            <img src="images/iphone6.jpeg" class="card-img-top" alt="iPhone 15 Plus"
+              onclick="location.href='product.html?id=iphone6'">
+            <button class="cart-hover-btn"
+              onclick="event.stopPropagation(); addToCart('iphone6','iPhone 15 Plus',360000)">
+              <i class="bi bi-cart"></i>
+            </button>
+            <div class="card-body">
+              <h5 class="card-title">iPhone 15 Plus</h5>
+              <p class="text-danger">PKR 360,000</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- iPhone 7 -->
+        <div class="col-md-3 product-card" data-category="iphone">
+          <div class="card">
+            <img src="images/iphone7.jpeg" class="card-img-top" alt="iPhone 15 Pro"
+              onclick="location.href='product.html?id=iphone7'">
+            <button class="cart-hover-btn"
+              onclick="event.stopPropagation(); addToCart('iphone7','iPhone 15 Pro',410000)">
+              <i class="bi bi-cart"></i>
+            </button>
+            <div class="card-body">
+              <h5 class="card-title">iPhone 15 Pro</h5>
+              <p class="text-danger">PKR 410,000</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- iPhone 8 -->
+        <div class="col-md-3 product-card" data-category="iphone">
+          <div class="card">
+            <img src="images/iphone8.jpeg" class="card-img-top" alt="iPhone 15 Pro Max"
+              onclick="location.href='product.html?id=iphone8'">
+            <button class="cart-hover-btn"
+              onclick="event.stopPropagation(); addToCart('iphone8','iPhone 15 Pro Max',470000)">
+              <i class="bi bi-cart"></i>
+            </button>
+            <div class="card-body">
+              <h5 class="card-title">iPhone 15 Pro Max</h5>
+              <p class="text-danger">PKR 470,000</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Watches -->
+      <div class="row g-4">
+
+        <!-- Watch 1 -->
+        <div class="col-md-3 product-card" data-category="watchsz">
+          <div class="card">
+            <img src="images/watchs1.webp" class="card-img-top" alt="Ignite Smartwatch"
+              onclick="location.href='product.html?id=watchs1'">
+            <button class="cart-hover-btn"
+              onclick="event.stopPropagation(); addToCart('watchs1','Ignite Smartwatch',5999)">
+              <i class="bi bi-cart"></i>
+            </button>
+            <div class="card-body">
+              <h5 class="card-title">Ignite Smartwatch</h5>
+              <p class="text-danger">PKR 5,999</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Watch 2 -->
+        <div class="col-md-3 product-card" data-category="watchsz">
+          <div class="card">
+            <img src="images/watchs2.webp" class="card-img-top" alt="Jewel Smartwatch"
+              onclick="location.href='product.html?id=watchs2'">
+            <button class="cart-hover-btn"
+              onclick="event.stopPropagation(); addToCart('watchs2','Jewel Smartwatch',12999)">
+              <i class="bi bi-cart"></i>
+            </button>
+            <div class="card-body">
+              <h5 class="card-title">Jewel Smartwatch</h5>
+              <p class="text-danger">PKR 12,999</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Watch 3 -->
+        <div class="col-md-3 product-card" data-category="watchsz">
+          <div class="card">
+            <img src="images/watchs3.webp" class="card-img-top" alt="Regal AI Smartwatch"
+              onclick="location.href='product.html?id=watchs3'">
+            <button class="cart-hover-btn"
+              onclick="event.stopPropagation(); addToCart('watchs3','Regal AI Smartwatch',19999)">
+              <i class="bi bi-cart"></i>
+            </button>
+            <div class="card-body">
+              <h5 class="card-title">Regal AI Smartwatch</h5>
+              <p class="text-danger">PKR 19,999</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Watch 4 -->
+        <div class="col-md-3 product-card" data-category="watchsz">
+          <div class="card">
+            <img src="images/watchs4.webp" class="card-img-top" alt="Elite Smartwatch"
+              onclick="location.href='product.html?id=watchs4'">
+            <button class="cart-hover-btn"
+              onclick="event.stopPropagation(); addToCart('watchs4','Elite Smartwatch',9899)">
+              <i class="bi bi-cart"></i>
+            </button>
+            <div class="card-body">
+              <h5 class="card-title">Elite Smartwatch</h5>
+              <p class="text-danger">PKR 9,899</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Watch 5 -->
+        <div class="col-md-3 product-card" data-category="watchsz">
+          <div class="card">
+            <img src="images/watchs5.webp" class="card-img-top" alt="Vogue Smartwatch"
+              onclick="location.href='product.html?id=watchs5'">
+            <button class="cart-hover-btn"
+              onclick="event.stopPropagation(); addToCart('watchs5','Vogue Smartwatch',14999)">
+              <i class="bi bi-cart"></i>
+            </button>
+            <div class="card-body">
+              <h5 class="card-title">Vogue Smartwatch</h5>
+              <p class="text-danger">PKR 14,999</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Watch 6 -->
+        <div class="col-md-3 product-card" data-category="watchsz">
+          <div class="card">
+            <img src="images/watchs6.webp" class="card-img-top" alt="Crown Smartwatch"
+              onclick="location.href='product.html?id=watchs6'">
+            <button class="cart-hover-btn"
+              onclick="event.stopPropagation(); addToCart('watchs6','Crown Smartwatch',11999)">
+              <i class="bi bi-cart"></i>
+            </button>
+            <div class="card-body">
+              <h5 class="card-title">Crown Smartwatch</h5>
+              <p class="text-danger">PKR 11,999</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Watch 7 -->
+        <div class="col-md-3 product-card" data-category="watchsz">
+          <div class="card">
+            <img src="images/watchs7.webp" class="card-img-top" alt="Revoltt Pro Smartwatch"
+              onclick="location.href='product.html?id=watchs7'">
+            <button class="cart-hover-btn"
+              onclick="event.stopPropagation(); addToCart('watchs7','Revoltt Pro Smartwatch',11999)">
+              <i class="bi bi-cart"></i>
+            </button>
+            <div class="card-body">
+              <h5 class="card-title">Revoltt Pro Smartwatch</h5>
+              <p class="text-danger">PKR 11,999</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Watch 8 -->
+        <div class="col-md-3 product-card" data-category="watchsz">
+          <div class="card">
+            <img src="images/watchs8.webp" class="card-img-top" alt="Luna Pro"
+              onclick="location.href='product.html?id=watchs8'">
+            <button class="cart-hover-btn" onclick="event.stopPropagation(); addToCart('watchs8','Luna Pro',6999)">
+              <i class="bi bi-cart"></i>
+            </button>
+            <div class="card-body">
+              <h5 class="card-title">Luna Pro</h5>
+              <p class="text-danger">PKR 6,999</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Watch 9 -->
+        <div class="col-md-3 product-card" data-category="watchss">
+          <div class="card">
+            <img src="images/watchs9.webp" class="card-img-top" alt="Wyndow"
+              onclick="location.href='product.html?id=watchs9'">
+            <button class="cart-hover-btn" onclick="event.stopPropagation(); addToCart('watchs9','Wyndow',14999)">
+              <i class="bi bi-cart"></i>
+            </button>
+            <div class="card-body">
+              <h5 class="card-title">Wyndow</h5>
+              <p class="text-danger">PKR 14,999</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Watch 10 -->
+        <div class="col-md-3 product-card" data-category="watchss">
+          <div class="card">
+            <img src="images/watchs10.webp" class="card-img-top" alt="Elite"
+              onclick="location.href='product.html?id=watchs10'">
+            <button class="cart-hover-btn" onclick="event.stopPropagation(); addToCart('watchs10','Elite',8499)">
+              <i class="bi bi-cart"></i>
+            </button>
+            <div class="card-body">
+              <h5 class="card-title">Elite</h5>
+              <p class="text-danger">PKR 8,499</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Watch 11 -->
+        <div class="col-md-3 product-card" data-category="watchss">
+          <div class="card">
+            <img src="images/watchs11.webp" class="card-img-top" alt="Washington"
+              onclick="location.href='product.html?id=watchs11'">
+            <button class="cart-hover-btn" onclick="event.stopPropagation(); addToCart('watchs11','Washington',10999)">
+              <i class="bi bi-cart"></i>
+            </button>
+            <div class="card-body">
+              <h5 class="card-title">Washington</h5>
+              <p class="text-danger">PKR 10,999</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Watch 12 -->
+        <div class="col-md-3 product-card" data-category="watchss">
+          <div class="card">
+            <img src="images/watchs12.webp" class="card-img-top" alt="Duchess"
+              onclick="location.href='product.html?id=watchs12'">
+            <button class="cart-hover-btn" onclick="event.stopPropagation(); addToCart('watchs12','Duchess',13999)">
+              <i class="bi bi-cart"></i>
+            </button>
+            <div class="card-body">
+              <h5 class="card-title">Duchess</h5>
+              <p class="text-danger">PKR 13,999</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Watch 13 -->
+        <div class="col-md-3 product-card" data-category="watchss">
+          <div class="card">
+            <img src="images/watchs13.webp" class="card-img-top" alt="Wondrous"
+              onclick="location.href='product.html?id=watchs13'">
+            <button class="cart-hover-btn" onclick="event.stopPropagation(); addToCart('watchs13','Wondrous',10999)">
+              <i class="bi bi-cart"></i>
+            </button>
+            <div class="card-body">
+              <h5 class="card-title">Wondrous</h5>
+              <p class="text-danger">PKR 10,999</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Watch 14 -->
+        <div class="col-md-3 product-card" data-category="watchss">
+          <div class="card">
+            <img src="images/watchs14.webp" class="card-img-top" alt="Infinity"
+              onclick="location.href='product.html?id=watchs14'">
+            <button class="cart-hover-btn" onclick="event.stopPropagation(); addToCart('watchs14','Infinity',13799)">
+              <i class="bi bi-cart"></i>
+            </button>
+            <div class="card-body">
+              <h5 class="card-title">Infinity</h5>
+              <p class="text-danger">PKR 13,799</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Watch 15 -->
+        <div class="col-md-3 product-card" data-category="watchss">
+          <div class="card">
+            <img src="images/watchs15.webp" class="card-img-top" alt="Drift"
+              onclick="location.href='product.html?id=watchs15'">
+            <button class="cart-hover-btn" onclick="event.stopPropagation(); addToCart('watchs15','Drift',29999)">
+              <i class="bi bi-cart"></i>
+            </button>
+            <div class="card-body">
+              <h5 class="card-title">Drift</h5>
+              <p class="text-danger">PKR 29,999</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Watch 16 -->
+        <div class="col-md-3 product-card" data-category="watchss">
+          <div class="card">
+            <img src="images/watchs16.webp" class="card-img-top" alt="Zentro"
+              onclick="location.href='product.html?id=watchs16'">
+            <button class="cart-hover-btn" onclick="event.stopPropagation(); addToCart('watchs16','Zentro',26499)">
+              <i class="bi bi-cart"></i>
+            </button>
+            <div class="card-body">
+              <h5 class="card-title">Zentro</h5>
+              <p class="text-danger">PKR 26,499</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <!-- /productContainer -->
+
+  <footer>
+    <div style="background:#2C2C2C; color:#0a0909;" class="pt-4 pb-3">
+      <div class="container">
+        <div class="row">
+          <!-- Brand & Social -->
+          <div class="col-md-4 mb-3 text-center text-md-start">
+            <h4 style="font-family:'Playfair Display',serif; font-weight:bold;">The Gift Shop</h4>
+            <p style="font-size:0.9rem;">Making every moment special 🎁</p>
+            <div class="d-flex gap-3 mt-2 justify-content-center justify-content-md-start">
+              <a href="https://www.facebook.com/login/" class="text-decoration-none text-white fs-5"><i
+                  class="fab fa-facebook"></i></a>
+              <a href="https://x.com/?lang=en" class="text-decoration-none text-white fs-5"><i
+                  class="fab fa-twitter"></i></a>
+              <a href="https://www.instagram.com/" class="text-decoration-none text-white fs-5"><i
+                  class="fab fa-instagram"></i></a>
+              <a href="https://web.whatsapp.com/" class="text-decoration-none text-white fs-5"><i
+                  class="fab fa-whatsapp"></i></a>
+            </div>
+          </div>
+
+          <!-- Middle -->
+            <div class="col-md-4 mb-3">
+              <h6 class="fw-bold mb-3">Quick Links</h6>
+              <ul class="list-unstyled">
+                <li><a href="../homepage/index.html" class="text-white">Home</a></li>
+                <li><a href="../homepage/gift.html" class="text-white">Gifts</a></li>
+                <li><a href="../homepage/brands.html" class="text-white">Brands</a></li>
+                <li><a href="../homepage/brandcomparison.html" class="text-white">Brands Comparison</a></li>
+                <li><a href="../homepage/blog.html" class="text-white">Blog</a></li>
+                <li><a href="../homepage/help.html" class="text-white">Help</a></li>
+                <li><a href="../homepage/about.html" class="text-white">About</a></li>
+                <li><a href="../homepage/contact.html" class="text-white">Contact</a></li>
+              </ul>
+            </div>
+
+          <!-- Payment -->
+          <div class="col-md-4 mb-3 text-center text-md-end">
+            <h6 class="fw-bold mb-3">We Accept</h6>
+            <div class="d-flex justify-content-center justify-content-md-end gap-2">
+              <img src="https://img.icons8.com/color/48/visa.png" alt="Visa" width="40" />
+              <img src="https://img.icons8.com/color/48/mastercard.png" alt="MasterCard" width="40" />
+              <img src="https://img.icons8.com/color/48/paypal.png" alt="PayPal" width="40" />
+              <img src="https://img.icons8.com/color/48/cash-in-hand.png" alt="COD" width="40" />
+            </div>
+          </div>
+        </div>
+        <hr style="border-color:rgba(255,255,255,0.4);">
+        <p class="text-center mb-0" style="font-size:0.85rem;">© 2025 The Gift
+          Shop | Privacy | Terms</p>
+      </div>
+    </div>
+  </footer>
+  <script>
+
+    // ---------- Filter/Search ----------
+    const searchBox = document.getElementById('searchBox');
+    const categoryFilter = document.getElementById('categoryFilter');
+    const cards = document.querySelectorAll('.product-card');
+
+    function filterProducts() {
+      const q = searchBox.value.trim().toLowerCase();
+      const selectedCat = categoryFilter.value;
+      cards.forEach(c => {
+        const title = c.querySelector('.card-title').innerText.toLowerCase();
+        const category = c.getAttribute('data-category');
+        const matches = title.includes(q) && (selectedCat === 'all' || category === selectedCat);
+        c.style.display = matches ? 'block' : 'none';
+      });
+    }
+
+    searchBox.addEventListener('input', filterProducts);
+    categoryFilter.addEventListener('change', filterProducts);
+
+    // ---------- Cart ----------
+    const CART_KEY = 'gv_cart';
+
+    function getCart() {
+      return JSON.parse(localStorage.getItem(CART_KEY) || '[]');
+    }
+
+    function saveCart(c) {
+      localStorage.setItem(CART_KEY, JSON.stringify(c));
+    }
+
+    function addToCart(id, title, price) {
+      const c = getCart();
+      const f = c.find(x => x.id === id);
+      if (f) f.qty++;
+      else c.push({ id, title, price, qty: 1 });
+      saveCart(c);
+      updateCartCount();
+    }
+
+    function updateCartCount() {
+      const cnt = getCart().reduce((s, i) => s + i.qty, 0);
+      document.getElementById('cart-num').textContent = cnt;
+      renderCart();
+    }
+
+    function renderCart() {
+      const container = document.getElementById('cartItems');
+      const totalEl = document.getElementById('cartTotal');
+      const c = getCart();
+      container.innerHTML = '';
+      if (c.length === 0) {
+        container.innerHTML = '<div class="text-muted">Cart is empty</div>';
+        totalEl.textContent = '0';
+        return;
+      }
+      let total = 0;
+      c.forEach((it, index) => {
+        total += it.qty * it.price;
+        container.innerHTML += `
+        <div class="d-flex justify-content-between align-items-center mb-2">
+          <div>${it.title} x ${it.qty}</div>
+          <div>
+            PKR ${it.price * it.qty}
+            <button class="btn btn-sm btn-danger ms-2" onclick="removeItem(${index})">x</button>
+          </div>
+        </div>`;
+      });
+      totalEl.textContent = total;
+    }
+
+    function removeItem(index) {
+      const c = getCart();
+      c.splice(index, 1);
+      saveCart(c);
+      updateCartCount();
+    }
+
+    function clearCart() {
+      localStorage.removeItem(CART_KEY);
+      updateCartCount();
+    }
+
+    function goToCheckout() {
+      if (getCart().length === 0) {
+        alert("Your cart is empty!");
+      } else {
+        window.location.href = "../homepage/checkout.html";
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", updateCartCount);
+
+    // ---------- Compare ----------
+    // let compareList = [];
+    // function toggleCompare(id, title, price, cat, img) {
+    //   const idx = compareList.findIndex(p => p.id === id);
+    //   if (idx > -1) compareList.splice(idx, 1);
+    //   else if (compareList.length < 4) compareList.push({ id, title, price, category: cat, img });
+    //   else { alert("Max 4 products"); return; }
+    //   document.getElementById('compareCount').textContent = compareList.length;
+    // }
+
+    // function showComparison() {
+    //   if (compareList.length < 2) { alert("Select at least 2 products"); return; }
+    //   let html = '<div class="d-flex gap-3 justify-content-center flex-wrap">';
+    //   compareList.forEach(p => {
+    //     html += `
+    //   <div class="card p-2 text-center" style="width:200px;background:#fff0f5;border-radius:16px;box-shadow:0 4px 12px rgba(0,0,0,0.15);">
+    //     <img src="${p.img}" class="card-img-top" style="height:100px;object-fit:cover;border-radius:12px;">
+    //     <h6 class="mt-2">${p.title}</h6>
+    //     <p>PKR ${p.price}</p>
+    //     <p class="text-muted">${p.category}</p>
+    //     <button class="btn btn-sm btn-danger" onclick="removeCompare('${p.id}')">Remove</button>
+    //   </div>`;
+    //   });
+    //   html += '</div>';
+    //   document.getElementById('compareModalBody').innerHTML = html;
+    //   new bootstrap.Modal(document.getElementById('compareModal')).show();
+    // }
+
+    // function removeCompare(id) {
+    //   compareList = compareList.filter(p => p.id !== id);
+    //   document.getElementById('compareCount').textContent = compareList.length;
+    //   const cb = document.getElementById(`compare-${id}`);
+    //   if (cb) cb.checked = false;
+    //   if (compareList.length < 2) {
+    //     bootstrap.Modal.getInstance(document.getElementById('compareModal')).hide();
+    //     alert("Please select at least 2 products to compare!");
+    //     return;
+    //   }
+    //   showComparison();
+    // }
+
+    // ---------- URL Param Filter ----------
+    const params = new URLSearchParams(window.location.search);
+    const selectedCategory = params.get("cat");
+
+    if (selectedCategory) {
+      cards.forEach(card => {
+        const category = card.getAttribute("data-category");
+        if (category === selectedCategory) {
+          card.style.display = "block";
+        } else {
+          card.style.display = "none";
+        }
+      });
+      if (categoryFilter) {
+        categoryFilter.value = selectedCategory;
+      }
+    }
+
+
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

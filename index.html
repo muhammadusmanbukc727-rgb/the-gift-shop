@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Gift Shop</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Playfair+Display:wght@700&display=swap"
+    rel="stylesheet">
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="../css/common.css">
+  <style>
+    /* (Your existing CSS, unchanged) */
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #fff;
+      color: #222;
+    }
+
+    
+    .cart-count {
+      font-weight: bold;
+      color: #ff6f00;
+      font-size: 1rem;
+      margin-left: 15px;
+      cursor: pointer;
+    }
+
+   
+     .carousel-item {
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .carousel-item video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      z-index: 1;
+      transform: translate(-50%, -50%);
+      object-fit: cover;
+    }
+
+    /* Overlay added here */
+    .carousel-item::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5); /* You can adjust the darkness here */
+      z-index: 2;
+    }
+
+    .carousel-caption {
+      z-index: 3; /* On top of the overlay */
+      bottom: 40%;
+    }
+
+    .carousel-caption h1,
+    .carousel-caption p {
+      color: #fff;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+    }
+
+    /* Product Cards */
+    .card {
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+    }
+
+    .card:hover {
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .card-price {
+      color: #ff6f00;
+      font-weight: bold;
+      font-size: 1rem;
+    }
+
+    /* Buttons */
+    .btn-add {
+      background-color: #ffffff;
+      color: #ff6f00;
+      border: 1px solid #ff6f00;
+      font-weight: 500;
+      padding: 5px 16px;
+      border-radius: 5px;
+    }
+
+    .btn-add:hover {
+      background-color: #ff6f00;
+      color: white;
+    }
+
+    .btn-view {
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      padding: 5px 16px;
+      font-weight: 500;
+      border-radius: 5px;
+    }
+
+    .btn-view:hover {
+      background-color: #43a047;
+    }
+
+   
+
+  
+
+   #trend {
+        background: rgba(255, 252, 252, 0.719);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 24px;
+      font-weight: bold;
+      color: #333;
+      padding: 10px 20px;
+      border-radius: 8px;
+      
+      margin-top: 10px;
+    }
+
+    /* ✅ FIX: Make carousel start below fixed navbar */
+    body {
+      padding-top: 105px;
+      /* same as navbar height */
+    }
+
+    .carousel {
+      margin-top: 0;
+    }
+    
+  </style>
+</head>
+
+<body>
+  <img src="images/premium_photo-1664274132563-58233267f8e8 (1).avif" class="bg-img" alt="Gift Background">
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container-fluid">
+      <!-- Logo -->
+      <a class="navbar-brand" href="../homepage/index.html">
+        <img src="../homepage/images/The Gift Shop Logo00 Design.png" alt="The Gift Shop Logo" height="80" width="150">
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+       <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav mx-auto mb-2 mb-lg-0 gap-3">
+            <li class="nav-item"><a class="nav-link active" href="../homepage/index.html">Home</a></li>
+            <!-- Gifts Dropdown -->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle active" href="../homepage/gift.html" role="button"
+                data-bs-toggle="dropdown">Gifts</a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item category-link" data-category="all" href="gift.html">All</a></li>
+                <li><a class="dropdown-item" href="../homepage/gift.html?cat=chocolate">Chocolate</a></li>
+                <li><a class="dropdown-item" href="../homepage/gift.html?cat=hamper">Hamper</a></li>
+                <li><a class="dropdown-item" href="../homepage/gift.html?cat=flowe">Flower</a></li>
+                <li><a class="dropdown-item" href="../homepage/gift.html?cat=jewellery">Jewellery</a></li>
+                <li><a class="dropdown-item" href="../homepage/gift.html?cat=watchs">Watchs</a></li>
+                <li><a class="dropdown-item" href="../homepage/gift.html?cat=cake">Cake</a></li>
+                <li><a class="dropdown-item" href="../homepage/gift.html?cat=birthdaycard">Birthdaycards</a></li>
+                <li><a class="dropdown-item" href="../homepage/gift.html?cat=perfume">Perfume</a></li>
+              </ul>
+            </li>
+            <!-- brands  -->
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle active" href="../gift/brands.html" role="button"
+                data-bs-toggle="dropdown">Brands</a>
+              <ul class="dropdown-menu">
+                <!-- Perfumes -->
+                <li>
+                  <h6 class="dropdown-header">Perfumes</h6>
+                </li>
+                <li><a class="dropdown-item category-link" href="../homepage/brands.html?cat=perfumejm">J. (For Men)</a>
+                </li>
+                <li><a class="dropdown-item category-link" href="../homepage/brands.html?cat=perfumejf">J. (For
+                    Women)</a>
+                </li>
+                <li><a class="dropdown-item category-link" href="../homepage/brands.html?cat=perfumebm">Bonanza
+                    (Men)</a>
+                </li>
+                <li><a class="dropdown-item category-link" href="../homepage/brands.html?cat=perfumebf">Bonanza
+                    (Women)</a>
+                </li>
+
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+
+                <!-- Watches -->
+                <li>
+                  <h6 class="dropdown-header">Watches</h6>
+                </li>
+                <li><a class="dropdown-item category-link" href="../homepage/brands.html?cat=watchsz">Zero Lifestyle</a>
+                <li><a class="dropdown-item category-link" href="../homepage/brands.html?cat=watchss">Seveston</a></li>
+            </li>
+
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <!-- Mobiles -->
+            <li>
+              <h6 class="dropdown-header">Mobiles</h6>
+            </li>
+            <li><a class="dropdown-item category-link" href="../homepage/brands.html?cat=iphone">iPhone</a></li>
+            <li><a class="dropdown-item category-link" href="../homepage/brands.html?cat=samsung">Samsung</a></li>
+
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <!-- All Option -->
+            <li><a class="dropdown-item category-link fw-semibold text-center" href="../homepage/brands.html">View
+                All Brands</a></li>
+          </ul>
+          </li>
+
+          <!-- Brand Comparison -->
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle active" href="brandcomparison.html" role="button"
+              data-bs-toggle="dropdown">Brands Comparison</a>
+            <ul class="dropdown-menu">
+              <!-- Perfumes -->
+              <li>
+                <h6 class="dropdown-header">Perfumes</h6>
+              </li>
+              <li><a class="dropdown-item category-link" href="../homepage/brands.html?cat=perfumejm">J. (For Men)</a>
+              </li>
+              <li><a class="dropdown-item category-link" href="../homepage/brands.html?cat=perfumejf">J. (For Women)</a>
+              </li>
+              <li><a class="dropdown-item category-link" href="../homepahe/brands.html?cat=perfumebm">Bonanza (Men)</a>
+              </li>
+              <li><a class="dropdown-item category-link" href="../homepage/brands.html?cat=perfumebf">Bonanza
+                  (Women)</a>
+              </li>
+
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+
+              <!-- Watches -->
+              <li>
+                <h6 class="dropdown-header">Watches</h6>
+              </li>
+              <li><a class="dropdown-item category-link" href="../homepage/brands.html?cat=watchsz">Zero Lifestyle</a>
+              <li><a class="dropdown-item category-link" href="../homepage/brands.html?cat=watchss">Seveston</a></li>
+          </li>
+
+          <li>
+            <hr class="dropdown-divider">
+          </li>
+
+          <!-- Mobiles -->
+          <li>
+            <h6 class="dropdown-header">Mobiles</h6>
+          </li>
+          <li><a class="dropdown-item category-link" href="../homepage/brands.html?cat=iphone">iPhone</a></li>
+          <li><a class="dropdown-item category-link" href="../homepage/brands.html?cat=samsung">Samsung</a></li>
+
+          <li>
+            <hr class="dropdown-divider">
+          </li>
+
+          <!-- All Option -->
+          <li><a class="dropdown-item category-link fw-semibold text-center" href="../homepage/brands.html">View
+              All Comparisons</a></li>
+          </ul>
+          </li>
+
+          <li class="nav-item"><a class="nav-link" href="../homepage/blog.html">Blog</a></li>
+          <li class="nav-item"><a class="nav-link" href="../homepage/help.html">Help</a></li>
+          <li class="nav-item"><a class="nav-link" href="../homepage/about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="../homepage/contact.html">Contact</a></li>
+          </ul>
+
+        <!-- Cart Icon -->
+        <span class="cart-count" id="cart-count" data-bs-toggle="offcanvas" data-bs-target="#cartCanvas">
+          <i class="fas fa-shopping-cart"></i> (<span id="cart-num">0</span>)
+        </span>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- Bootstrap Carousel -->
+<div id="videoHeroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+  <div class="carousel-inner">
+
+    <!-- Slide 1 -->
+    <div class="carousel-item active">
+      <video autoplay muted loop playsinline>
+        <source src="VIDEOS/watermarked_preview (1).mp4" type="video/mp4">
+      </video>
+      <div class="carousel-caption text-center">
+        <h1>Perfect Gifts for Every Moment</h1>
+        <p>Find something special for your loved ones</p>
+        <a href="gift.html" class="btn btn-warning">Shop Now</a>
+      </div>
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="carousel-item">
+      <video autoplay muted loop playsinline>
+        <source src="VIDEOS/watermarked_preview (2).mp4" type="video/mp4">
+      </video>
+      <div class="carousel-caption text-center">
+        <h1>Wrap Joy With Love</h1>
+        <p>Beautifully packed gifts delivered to your door</p>
+        <a href="gift.html" class="btn btn-warning">Browse Gifts</a>
+      </div>
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="carousel-item">
+      <video autoplay muted loop playsinline>
+        <source src="VIDEOS/watermarked_preview.mp4" type="video/mp4">
+      </video>
+      <div class="carousel-caption text-center">
+        <h1>Moments Made Memorable</h1>
+        <p>Give the gift of happiness today</p>
+        <a href="gift.html" class="btn btn-warning">Start Gifting</a>
+      </div>
+    </div>
+
+  </div>
+   <!-- Controls -->
+  <button class="carousel-control-prev" type="button" data-bs-target="#videoHeroCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <!-- <span class="visually-hidden">Previous</span> -->
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#videoHeroCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <!-- <span class="visually-hidden">Next</span> -->
+  </button>
+</div>
+
+
+  <!-- Product Cards -->
+  <div class="container my-5">
+    <h3 class="text-center" id="trend">Trending Gifts</h3>
+    <div class="row g-4 mt-3">
+      <!-- Card 1 -->
+      <div class="col-md-3">
+        <div class="card text-center p-2">
+          <img src="images/chocolate8.webp" class="card-img-top" alt="Chocolate" />
+          <div class="card-body">
+            <h5 class="card-title">HEART OF GOLD</h5>
+            <p class="card-price">PKR 3,450</p>
+            <div class="d-flex justify-content-around mt-3">
+              <a href="gift.html?cat=chocolates" class="btn btn-view">View</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Card 2 -->
+      <div class="col-md-3">
+        <div class="card text-center p-2">
+          <img src="images/jewellery1.webp" class="card-img-top" alt="Gift Hamper" />
+          <div class="card-body">
+            <h5 class="card-title">Akira Necklace Set</h5>
+            <p class="card-price">PKR 200,000</p>
+            <div class="d-flex justify-content-around mt-3">
+              <a href="gift.html?cat=jewellery" class="btn btn-view">View</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Card 3 -->
+      <div class="col-md-3">
+        <div class="card text-center p-2">
+          <img src="images/perfume10.webp" class="card-img-top" alt="Flower" />
+          <div class="card-body">
+            <h5 class="card-title">Maestro For Him</h5>
+            <p class="card-price">PKR 14,400</p>
+            <div class="d-flex justify-content-around mt-3">
+              <a href="gift.html?cat=perfumes" class="btn btn-view">View</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Card 4 -->
+      <div class="col-md-3">
+        <div class="card text-center p-2">
+          <img src="images/cake14.webp" class="card-img-top" alt="Cake" />
+          <div class="card-body">
+            <h5 class="card-title">Chocolate Fudge Cake</h5>
+            <p class="card-price">PKR 2,600</p>
+            <div class="d-flex justify-content-around mt-3">
+              <a href="gift.html?cat=cakes" class="btn btn-view">View</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Offcanvas Cart -->
+  <div class="offcanvas offcanvas-end" tabindex="-1" id="cartCanvas">
+    <div class="offcanvas-header">
+      <h5>Your Cart</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+    </div>
+    <div class="offcanvas-body">
+      <div id="cart-items">Cart is empty</div>
+      <hr>
+      <p>Total: PKR <span id="cart-total">0</span></p>
+      <button class="btn btn-danger btn-sm" onclick="clearCart()">Clear</button>
+      <button class="btn btn-success btn-sm" onclick="goToCheckout()">Checkout</button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div style="background:#2C2C2C; color:#0a0909;" class="pt-4 pb-3">
+      <div class="container">
+        <div class="row">
+          <!-- Brand & Social -->
+          <div class="col-md-4 mb-3 text-center text-md-start">
+            <h4 style="font-family:'Playfair Display',serif; font-weight:bold;">The Gift Shop</h4>
+            <p style="font-size:0.9rem;">Making every moment special 🎁</p>
+            <div class="d-flex gap-3 mt-2 justify-content-center justify-content-md-start">
+              <a href="https://www.facebook.com/login/" class="text-decoration-none text-white fs-5"><i class="fab fa-facebook"></i></a>
+              <a href="https://x.com/?lang=en" class="text-decoration-none text-white fs-5"><i class="fab fa-twitter"></i></a>
+              <a href="https://www.instagram.com/" class="text-decoration-none text-white fs-5"><i class="fab fa-instagram"></i></a>
+              <a href="https://web.whatsapp.com/" class="text-decoration-none text-white fs-5"><i class="fab fa-whatsapp"></i></a>
+            </div>
+          </div>
+
+          <!-- Middle -->
+            <div class="col-md-4 mb-3">
+              <h6 class="fw-bold mb-3">Quick Links</h6>
+              <ul class="list-unstyled">
+                <li><a href="../homepage/index.html" class="text-white">Home</a></li>
+                <li><a href="../homepage/gift.html" class="text-white">Gifts</a></li>
+                <li><a href="../homepage/brands.html" class="text-white">Brands</a></li>
+                <li><a href="../homepage/brandcomparison.html" class="text-white">Brands Comparison</a></li>
+                <li><a href="../homepage/blog.html" class="text-white">Blog</a></li>
+                <li><a href="../homepage/help.html" class="text-white">Help</a></li>
+                <li><a href="../homepage/about.html" class="text-white">About</a></li>
+                <li><a href="../homepage/contact.html" class="text-white">Contact</a></li>
+              </ul>
+            </div>
+
+          <!-- Payment -->
+          <div class="col-md-4 mb-3 text-center text-md-end">
+            <h6 class="fw-bold mb-3">We Accept</h6>
+            <div class="d-flex justify-content-center justify-content-md-end gap-2">
+              <img src="https://img.icons8.com/color/48/visa.png" alt="Visa" width="40" />
+              <img src="https://img.icons8.com/color/48/mastercard.png" alt="MasterCard" width="40" />
+              <img src="https://img.icons8.com/color/48/paypal.png" alt="PayPal" width="40" />
+              <img src="https://img.icons8.com/color/48/cash-in-hand.png" alt="COD" width="40" />
+            </div>
+          </div>
+        </div>
+        <hr style="border-color:rgba(255,255,255,0.4);">
+        <p class="text-center mb-0" style="font-size:0.85rem;">© 2025 The Gift Shop | Privacy | Terms</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Cart Script -->
+  <script>
+    function getCart() {
+      return JSON.parse(localStorage.getItem('gv_cart') || '[]');
+    }
+
+    function saveCart(c) {
+      localStorage.setItem('gv_cart', JSON.stringify(c));
+    }
+
+    function addToCart(productName, price) {
+      const c = getCart();
+      const f = c.find(x => x.title === productName);
+      if (f) f.qty++;
+      else c.push({ id: Date.now(), title: productName, price, qty: 1 });
+      saveCart(c);
+      updateCartCount();
+    }
+
+    function updateCartCount() {
+      const cnt = getCart().reduce((s, i) => s + i.qty, 0);
+      document.getElementById("cart-num").innerText = cnt;
+      renderCart();
+    }
+
+    function renderCart() {
+      let cartItemsDiv = document.getElementById("cart-items");
+      let total = 0;
+      const c = getCart();
+      if (c.length === 0) {
+        cartItemsDiv.innerHTML = "Cart is empty";
+      } else {
+        cartItemsDiv.innerHTML = "";
+        c.forEach((item) => {
+          total += item.price * item.qty;
+          cartItemsDiv.innerHTML += `<div class="cart-item">${item.title} x ${item.qty} - PKR ${item.price * item.qty}</div>`;
+        });
+      }
+      document.getElementById("cart-total").innerText = total;
+    }
+
+    function clearCart() {
+      localStorage.removeItem('gv_cart');
+      updateCartCount();
+    }
+
+    function goToCheckout() {
+      if (getCart().length === 0) {
+        alert("Your cart is empty!");
+      } else {
+        window.location.href = "checkout.html";
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", updateCartCount);
+
+  </script>
+
+</body>
+
+</html>

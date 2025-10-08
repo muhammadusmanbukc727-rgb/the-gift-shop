@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Help - The Gift Shop</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../css/common.css">
+  <style>
+    .help-header {
+      background: rgba(255, 255, 255, 0.2);
+      /* transparent layer */
+      backdrop-filter: blur(8px);
+    }
+
+    .search {
+      --primary-orange: #ff6f00;
+      /* Main Orange */
+      --light-orange: #ff9800;
+      /* Lighter Orange for accents */
+      --white: #ffffff;
+    }
+
+    #sub {
+      --primary-orange: #ff6f00;
+      /* Main Orange */
+      --light-orange: #ff9800;
+      /* Lighter Orange for accents */
+      --white: #ffffff;
+    }
+
+    body {
+      background: var(--white);
+      color: var(--dark-text);
+    }
+
+    .help-header {
+
+      background: rgba(255, 252, 252, 0.719);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      padding: 50px 20px;
+      text-align: center;
+      border-radius: 0 0 20px 20px;
+      margin-top: 120px;
+    }
+
+    .faq-section {
+      margin: 40px auto;
+      max-width: 900px;
+    }
+
+    .accordion-button {
+      font-weight: 600;
+      color: var(--dark-text);
+    }
+
+    .accordion-button:not(.collapsed) {
+      background-color: var(--light-orange);
+      color: var(--white);
+    }
+
+    .contact-box,
+    .feedback-form {
+      background: rgba(255, 252, 252, 0.719);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      padding: 30px;
+      border-radius: 12px;
+      margin: 40px auto;
+      max-width: 800px;
+      /* border: 1px solid var(--light-orange); */
+    }
+
+    .contact-box h5 {
+      color: var(--primary-orange);
+    }
+
+    .form-label {
+
+      font-weight: 500;
+    }
+
+    .btn-submit {
+      background: var(--primary-orange);
+      color: var(--white);
+      font-weight: 600;
+      border: none;
+    }
+
+    .btn-submit:hover {
+      background: var(--light-orange);
+      color: var(--dark-text);
+    }
+
+    .btn-warning {
+      background-color: var(--primary-orange);
+      color: var(--white);
+    }
+
+    .btn-warning:hover {
+      background-color: var(--light-orange);
+    }
+
+    .search-box {
+      margin: 30px auto;
+      max-width: 600px;
+
+    }
+
+
+    .trend {
+      background: rgba(255, 252, 252, 0.719);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 24px;
+      font-weight: bold;
+      color: #333;
+      padding: 10px 20px;
+      border-radius: 8px;
+
+      margin-top: 10px;
+    }
+
+    .rend {
+      background: rgba(255, 252, 252, 0.719);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      display: flex;
+      justify-content: center;
+      /* align-items: center; */
+      font-size: 24px;
+      font-weight: bold;
+      color: #333;
+      padding: 10px 20px;
+      border-radius: 8px;
+      align-items: center;
+      flex-direction: column;
+
+      margin-top: 120px;
+    }
+
+
+    #cont {
+
+      /* Safari support */
+      align-items: center;
+      flex-direction: column;
+
+      font-size: 24px;
+      font-weight: bold;
+      color: #ff6600;
+      /* orange text */
+      padding: 10px 20px;
+      border-radius: 8px;
+      /* thoda rounded look */
+      display: flex;
+
+
+    }
+  </style>
+  </style>
+</head>
+
+<body>
+  <img src="images/premium_photo-1664274132563-58233267f8e8 (1).avif" class="bg-img" alt="Gift Background">
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container-fluid">
+      <!-- Logo -->
+      <a class="navbar-brand" href="../homepage/index.html">
+        <img src="../homepage/images/The Gift Shop Logo00 Design.png" alt="The Gift Shop Logo" height="80" width="150">
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0 gap-3">
+          <li class="nav-item"><a class="nav-link active" href="../homepage/index.html">Home</a></li>
+          <!-- Gifts Dropdown -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle active" href="../homepage/gift.html" role="button"
+              data-bs-toggle="dropdown">Gifts</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item category-link" data-category="all" href="gift.html">All</a></li>
+              <li><a class="dropdown-item" href="../homepage/gift.html?cat=chocolate">Chocolate</a></li>
+              <li><a class="dropdown-item" href="../homepage/gift.html?cat=hamper">Hamper</a></li>
+              <li><a class="dropdown-item" href="../homepage/gift.html?cat=flowe">Flower</a></li>
+              <li><a class="dropdown-item" href="../homepage/gift.html?cat=jewellery">Jewellery</a></li>
+              <li><a class="dropdown-item" href="../homepage/gift.html?cat=watchs">Watchs</a></li>
+              <li><a class="dropdown-item" href="../homepage/gift.html?cat=cake">Cake</a></li>
+              <li><a class="dropdown-item" href="../homepage/gift.html?cat=birthdaycard">Birthdaycards</a></li>
+              <li><a class="dropdown-item" href="../homepage/gift.html?cat=perfume">Perfume</a></li>
+            </ul>
+          </li>
+          <!-- brands  -->
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle active" href="../gift/brands.html" role="button"
+              data-bs-toggle="dropdown">Brands</a>
+            <ul class="dropdown-menu">
+              <!-- Perfumes -->
+              <li>
+                <h6 class="dropdown-header">Perfumes</h6>
+              </li>
+              <li><a class="dropdown-item category-link" href="../homepage/brands.html?cat=perfumejm">J. (For Men)</a>
+              </li>
+              <li><a class="dropdown-item category-link" href="../homepage/brands.html?cat=perfumejf">J. (For
+                  Women)</a>
+              </li>
+              <li><a class="dropdown-item category-link" href="../homepage/brands.html?cat=perfumebm">Bonanza
+                  (Men)</a>
+              </li>
+              <li><a class="dropdown-item category-link" href="../homepage/brands.html?cat=perfumebf">Bonanza
+                  (Women)</a>
+              </li>
+
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+
+              <!-- Watches -->
+              <li>
+                <h6 class="dropdown-header">Watches</h6>
+              </li>
+              <li><a class="dropdown-item category-link" href="../homepage/brands.html?cat=watchsz">Zero Lifestyle</a>
+              <li><a class="dropdown-item category-link" href="../homepage/brands.html?cat=watchss">Seveston</a></li>
+          </li>
+
+          <li>
+            <hr class="dropdown-divider">
+          </li>
+
+          <!-- Mobiles -->
+          <li>
+            <h6 class="dropdown-header">Mobiles</h6>
+          </li>
+          <li><a class="dropdown-item category-link" href="../homepage/brands.html?cat=iphone">iPhone</a></li>
+          <li><a class="dropdown-item category-link" href="../homepage/brands.html?cat=samsung">Samsung</a></li>
+
+          <li>
+            <hr class="dropdown-divider">
+          </li>
+
+          <!-- All Option -->
+          <li><a class="dropdown-item category-link fw-semibold text-center" href="../homepage/brands.html">View
+              All Brands</a></li>
+        </ul>
+        </li>
+
+        <!-- Brand Comparison -->
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle active" href="brandcomparison.html" role="button"
+            data-bs-toggle="dropdown">Brands Comparison</a>
+          <ul class="dropdown-menu">
+            <!-- Perfumes -->
+            <li>
+              <h6 class="dropdown-header">Perfumes</h6>
+            </li>
+            <li><a class="dropdown-item category-link" href="../homepage/brands.html?cat=perfumejm">J. (For Men)</a>
+            </li>
+            <li><a class="dropdown-item category-link" href="../homepage/brands.html?cat=perfumejf">J. (For Women)</a>
+            </li>
+            <li><a class="dropdown-item category-link" href="../homepahe/brands.html?cat=perfumebm">Bonanza (Men)</a>
+            </li>
+            <li><a class="dropdown-item category-link" href="../homepage/brands.html?cat=perfumebf">Bonanza
+                (Women)</a>
+            </li>
+
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <!-- Watches -->
+            <li>
+              <h6 class="dropdown-header">Watches</h6>
+            </li>
+            <li><a class="dropdown-item category-link" href="../homepage/brands.html?cat=watchsz">Zero Lifestyle</a>
+            <li><a class="dropdown-item category-link" href="../homepage/brands.html?cat=watchss">Seveston</a></li>
+        </li>
+
+        <li>
+          <hr class="dropdown-divider">
+        </li>
+
+        <!-- Mobiles -->
+        <li>
+          <h6 class="dropdown-header">Mobiles</h6>
+        </li>
+        <li><a class="dropdown-item category-link" href="../homepage/brands.html?cat=iphone">iPhone</a></li>
+        <li><a class="dropdown-item category-link" href="../homepage/brands.html?cat=samsung">Samsung</a></li>
+
+        <li>
+          <hr class="dropdown-divider">
+        </li>
+
+        <!-- All Option -->
+        <li><a class="dropdown-item category-link fw-semibold text-center" href="../homepage/brands.html">View
+            All Comparisons</a></li>
+        </ul>
+        </li>
+
+        <li class="nav-item"><a class="nav-link" href="../homepage/blog.html">Blog</a></li>
+        <li class="nav-item"><a class="nav-link" href="../homepage/help.html">Help</a></li>
+        <li class="nav-item"><a class="nav-link" href="../homepage/about.html">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="../homepage/contact.html">Contact</a></li>
+        </ul>
+        <!-- Cart Icon -->
+        <span class="cart-count" id="cart-count" data-bs-toggle="offcanvas" data-bs-target="#cartCanvas">
+          <i class="fas fa-shopping-cart"></i> (<span id="cart-num">0</span>)
+        </span>
+      </div>
+    </div>
+  </nav>
+  <!-- Cart Offcanvas -->
+  <div class="offcanvas offcanvas-end" tabindex="-1" id="cartCanvas">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title">Your Cart</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+    </div>
+    <div class="offcanvas-body">
+      <div id="cartItems"></div>
+      <div class="mt-3">Total: PKR <strong id="cartTotal">0</strong></div>
+      <div class="mt-3 d-flex gap-2">
+        <button class="btn btn-danger btn-sm" onclick="clearCart()">Clear</button>
+        <button class="btn btn-success btn-sm" onclick="goToCheckout()">Checkout</button>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="help-header rend">
+    <h1>Need Help?</h1>
+    <p class="lead">Find answers to common questions or reach out to our support team.</p>
+  </div>
+
+  <div class="search-box text-center d-flex justify-content-center my-4" id="search">
+    <input type="text" id="searchInput" class="form-control form-control-lg w-50 me-2"
+      placeholder="Search your question here...">
+    <button class="btn btn-warning fw-bold search" id="searchBtn">Search</button>
+  </div>
+
+
+  <div class="faq-section">
+    <h2 class="text-center mb-4 trend">Frequently Asked Questions</h2>
+    <div class="accordion" id="faqAccordion">
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#answer1">
+            How can I place an order?
+          </button>
+        </h2>
+        <div id="answer1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            Browse our categories, add items to your cart, and checkout using your preferred payment method.
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#answer2">
+            Do you offer same-day delivery?
+          </button>
+        </h2>
+        <div id="answer2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            Yes, we provide same-day delivery if the order is placed before 11:00 AM PST.
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#answer3">
+            Can I track my order?
+          </button>
+        </h2>
+        <div id="answer3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            After placing your order, you will receive an email with tracking details and delivery updates.
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#answer4">
+            What payment methods do you accept?
+          </button>
+        </h2>
+        <div id="answer4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            We accept credit/debit cards, bank transfers, and cash on delivery (for selected locations).
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#answer5">
+            What is your return policy?
+          </button>
+        </h2>
+        <div id="answer5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            You can return most items within 30 days of purchase for a full refund, provided they are in their original
+            condition and packaging.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="contact-box text-center">
+      <h5>Still need help?</h5>
+      <p>Our support team is available 24/7 to assist you.</p>
+      <p><strong>Email:</strong> support@thegiftshop.pk</p>
+      <p><strong>Phone:</strong> +92-300-2328255</p>
+      <a href="contact.html" class="btn btn-warning fw-bold search">Contact Us</a>
+    </div>
+  </div>
+
+  <div class="feedback-form">
+    <h2 class="text-center mb-4">We value your Feedback</h2>
+    <form>
+      <div class="mb-3">
+        <label class="form-label">Your Name</label>
+        <input type="text" class="form-control" placeholder="Enter your name" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Your Email</label>
+        <input type="email" class="form-control" placeholder="Enter your email" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Rate Us</label>
+        <select class="form-select" required>
+          <option value="">Choose...</option>
+          <option value="5">⭐⭐⭐⭐⭐ Excellent</option>
+          <option value="4">⭐⭐⭐⭐ Good</option>
+          <option value="3">⭐⭐⭐ Average</option>
+          <option value="2">⭐⭐ Poor</option>
+          <option value="1">⭐ Very Poor</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Your Feedback</label>
+        <textarea class="form-control" rows="4" placeholder="Write your feedback..." required></textarea>
+      </div>
+      <button type="submit" class="btn btn-submit w-100" id="sub">Submit Feedback</button>
+    </form>
+  </div>
+
+
+  <footer>
+    <div style="background:#2C2C2C; color:#0a0909;" class="pt-4 pb-3">
+      <div class="container">
+        <div class="row">
+          <!-- Brand & Social -->
+          <div class="col-md-4 mb-3 text-center text-md-start">
+            <h4 style="font-family:'Playfair Display',serif; font-weight:bold;">The Gift Shop</h4>
+            <p style="font-size:0.9rem;">Making every moment special 🎁</p>
+            <div class="d-flex gap-3 mt-2 justify-content-center justify-content-md-start">
+              <a href="https://www.facebook.com/login/" class="text-decoration-none text-white fs-5"><i
+                  class="fab fa-facebook"></i></a>
+              <a href="https://x.com/?lang=en" class="text-decoration-none text-white fs-5"><i
+                  class="fab fa-twitter"></i></a>
+              <a href="https://www.instagram.com/" class="text-decoration-none text-white fs-5"><i
+                  class="fab fa-instagram"></i></a>
+              <a href="https://web.whatsapp.com/" class="text-decoration-none text-white fs-5"><i
+                  class="fab fa-whatsapp"></i></a>
+            </div>
+          </div>
+
+           <!-- Middle -->
+            <div class="col-md-4 mb-3">
+              <h6 class="fw-bold mb-3">Quick Links</h6>
+              <ul class="list-unstyled">
+                <li><a href="../homepage/index.html" class="text-white">Home</a></li>
+                <li><a href="../homepage/gift.html" class="text-white">Gifts</a></li>
+                <li><a href="../homepage/brands.html" class="text-white">Brands</a></li>
+                <li><a href="../homepage/brandcomparison.html" class="text-white">Brands Comparison</a></li>
+                <li><a href="../homepage/blog.html" class="text-white">Blog</a></li>
+                <li><a href="../homepage/help.html" class="text-white">Help</a></li>
+                <li><a href="../homepage/about.html" class="text-white">About</a></li>
+                <li><a href="../homepage/contact.html" class="text-white">Contact</a></li>
+              </ul>
+            </div>
+          <!-- Payment -->
+          <div class="col-md-4 mb-3 text-center text-md-end">
+            <h6 class="fw-bold mb-3">We Accept</h6>
+            <div class="d-flex justify-content-center justify-content-md-end gap-2">
+              <img src="https://img.icons8.com/color/48/visa.png" alt="Visa" width="40" />
+              <img src="https://img.icons8.com/color/48/mastercard.png" alt="MasterCard" width="40" />
+              <img src="https://img.icons8.com/color/48/paypal.png" alt="PayPal" width="40" />
+              <img src="https://img.icons8.com/color/48/cash-in-hand.png" alt="COD" width="40" />
+            </div>
+          </div>
+        </div>
+        <hr style="border-color:rgba(255,255,255,0.4);">
+        <p class="text-center mb-0" style="font-size:0.85rem;">© 2025 The Gift Shop | Privacy | Terms</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // ================= CART SYSTEM =================
+
+    // Get cart from localStorage
+    function getCart() {
+      return JSON.parse(localStorage.getItem('gv_cart') || '[]');
+    }
+
+    // Save cart to localStorage
+    function saveCart(c) {
+      localStorage.setItem('gv_cart', JSON.stringify(c));
+    }
+
+    // Add item to cart
+    function addToCart(productName, price) {
+      const c = getCart();
+      const f = c.find(x => x.title === productName);
+      if (f) f.qty++;
+      else c.push({ id: Date.now(), title: productName, price, qty: 1 });
+      saveCart(c);
+      updateCartCount();
+    }
+
+    // Update cart count in navbar
+    function updateCartCount() {
+      const cnt = getCart().reduce((s, i) => s + i.qty, 0);
+      document.getElementById("cart-num").innerText = cnt;
+      renderCart();
+    }
+
+    // Render cart items inside offcanvas
+    function renderCart() {
+      let cartItemsDiv = document.getElementById("cartItems"); // ✅ fixed ID
+      let total = 0;
+      const c = getCart();
+
+      if (c.length === 0) {
+        cartItemsDiv.innerHTML = "Cart is empty";
+      } else {
+        cartItemsDiv.innerHTML = "";
+        c.forEach((item) => {
+          total += item.price * item.qty;
+          cartItemsDiv.innerHTML += `
+        <div class="cart-item">
+          ${item.title} x ${item.qty} - PKR ${item.price * item.qty}
+        </div>`;
+        });
+      }
+      document.getElementById("cartTotal").innerText = total; // ✅ fixed ID
+    }
+
+    // Clear cart
+    function clearCart() {
+      localStorage.removeItem('gv_cart');
+      updateCartCount();
+    }
+
+    // Go to checkout
+    function goToCheckout() {
+      if (getCart().length === 0) {
+        alert("Your cart is empty!");
+      } else {
+        window.location.href = "../homepage/checkout.html";
+      }
+    }
+
+    // ================= FAQ SEARCH SYSTEM =================
+
+    // Add event listener when DOM is loaded
+    document.addEventListener("DOMContentLoaded", function () {
+      updateCartCount(); // ✅ cart count refresh
+
+      // Search button event (make sure button has id="searchBtn")
+      const searchBtn = document.getElementById("searchBtn");
+      if (searchBtn) {
+        searchBtn.addEventListener("click", function () {
+          const searchInput = document.getElementById("searchInput").value.toLowerCase();
+          const faqs = document.querySelectorAll(".accordion-item");
+
+          faqs.forEach(faq => {
+            const question = faq.querySelector(".accordion-button").innerText.toLowerCase();
+            const answer = faq.querySelector(".accordion-body").innerText.toLowerCase();
+            if (question.includes(searchInput) || answer.includes(searchInput)) {
+              faq.style.display = "block";
+            } else {
+              faq.style.display = "none";
+            }
+          });
+        });
+      }
+    });
+
+    document.getElementById("searchInput").addEventListener("keypress", function (e) {
+      if (e.key === "Enter") {
+        document.getElementById("searchBtn").click();
+      }
+    });
+
+
+  </script>
+</body>
+
+</html>

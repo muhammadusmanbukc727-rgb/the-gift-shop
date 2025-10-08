@@ -1,0 +1,1992 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Product Details — The Gift Shop</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Playfair+Display:wght@700&display=swap"
+    rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="../css/common.css">
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #ff9646;
+      color: #ffffff;
+      padding-top: 70px;
+      background-color: #ffa866;
+    }
+    /* Related Product Cards */
+
+    .product-card {
+      margin-bottom: 20px;
+    }
+
+    .card {
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      transition: all 0.3s ease;
+      width: 260px;
+      height: 400px;
+      margin: 15px auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      cursor: pointer;
+      overflow: hidden;
+    }
+
+    .card img {
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover img {
+      transform: scale(1.05);
+    }
+
+    .card-img-top {
+      border-radius: 12px 12px 0 0;
+      object-fit: cover;
+      height: 220px;
+    }
+
+    .card:hover .cart-hover-btn {
+      opacity: 1;
+    }
+
+    
+    .card-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #00000000;
+      margin: 8px 0;
+    }
+
+    .card-price {
+      color: #ff6f00;
+      font-weight: bold;
+      font-size: 1rem;
+      margin-bottom: 10px;
+    }
+
+    .cart-hover-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: orange;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: 2;
+    }
+
+    #quality {
+      background-color: #ffffff;
+    }
+
+    #quality:hover {
+      color: black;
+    }
+
+   
+
+    .trend {
+      background: rgba(255, 255, 255, 0.71);
+      backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+      margin: 60px auto;
+      border-radius: 15px;
+      box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
+     
+    }
+    #trend {
+         background: rgba(255, 252, 252, 0.719);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 24px;
+      font-weight: bold;
+      color: #333;
+      padding: 10px 20px;
+      border-radius: 8px;
+      
+      margin-top: 10px;
+
+    }
+     
+  
+    .ditail {
+      color: #0a0909;
+    }
+    .card-title{
+      color: #0a0909;
+    }
+  </style>
+</head>
+
+<body>
+  <img src="images/premium_photo-1664274132563-58233267f8e8 (1).avif" class="bg-img" alt="Gift Background">
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container-fluid">
+      <!-- Logo -->
+      <a class="navbar-brand" href="../homepage/index.html">
+        <img src="../homepage/images/The Gift Shop Logo00 Design.png" alt="The Gift Shop Logo" height="80" width="150">
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+       <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav mx-auto mb-2 mb-lg-0 gap-3">
+            <li class="nav-item"><a class="nav-link active" href="../homepage/index.html">Home</a></li>
+            <!-- Gifts Dropdown -->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle active" href="../homepage/gift.html" role="button"
+                data-bs-toggle="dropdown">Gifts</a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item category-link" data-category="all" href="../homepage/gift.html">All</a></li>
+                <li><a class="dropdown-item" href="../homepage/gift.html?cat=chocolate">Chocolate</a></li>
+                <li><a class="dropdown-item" href="../homepage/gift.html?cat=hamper">Hamper</a></li>
+                <li><a class="dropdown-item" href="../homepage/gift.html?cat=flowe">Flower</a></li>
+                <li><a class="dropdown-item" href="../homepage/gift.html?cat=jewellery">Jewellery</a></li>
+                <li><a class="dropdown-item" href="../homepage/gift.html?cat=watchs">Watchs</a></li>
+                <li><a class="dropdown-item" href="../homepage/gift.html?cat=cake">Cake</a></li>
+                <li><a class="dropdown-item" href="../homepage/gift.html?cat=birthdaycard">Birthdaycards</a></li>
+                <li><a class="dropdown-item" href="../homepage/gift.html?cat=perfume">Perfume</a></li>
+              </ul>
+            </li>
+            <!-- brands  -->
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle active" href="../gift/brands.html" role="button"
+                data-bs-toggle="dropdown">Brands</a>
+              <ul class="dropdown-menu">
+                <!-- Perfumes -->
+                <li>
+                  <h6 class="dropdown-header">Perfumes</h6>
+                </li>
+                <li><a class="dropdown-item category-link" href="../homepage/brands.html?cat=perfumejm">J. (For Men)</a>
+                </li>
+                <li><a class="dropdown-item category-link" href="../homepage/brands.html?cat=perfumejf">J. (For
+                    Women)</a>
+                </li>
+                <li><a class="dropdown-item category-link" href="../homepage/brands.html?cat=perfumebm">Bonanza
+                    (Men)</a>
+                </li>
+                <li><a class="dropdown-item category-link" href="../homepage/brands.html?cat=perfumebf">Bonanza
+                    (Women)</a>
+                </li>
+
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+
+                <!-- Watches -->
+                <li>
+                  <h6 class="dropdown-header">Watches</h6>
+                </li>
+                <li><a class="dropdown-item category-link" href="../homepage/brands.html?cat=watchsz">Zero Lifestyle</a>
+                <li><a class="dropdown-item category-link" href="../homepage/brands.html?cat=watchss">Seveston</a></li>
+            </li>
+
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <!-- Mobiles -->
+            <li>
+              <h6 class="dropdown-header">Mobiles</h6>
+            </li>
+            <li><a class="dropdown-item category-link" href="../homepage/brands.html?cat=iphone">iPhone</a></li>
+            <li><a class="dropdown-item category-link" href="../homepage/brands.html?cat=samsung">Samsung</a></li>
+
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <!-- All Option -->
+            <li><a class="dropdown-item category-link fw-semibold text-center" href="../homepage/brands.html">View
+                All Brands</a></li>
+          </ul>
+          </li>
+
+          <!-- Brand Comparison -->
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle active" href="brandcomparison.html" role="button"
+              data-bs-toggle="dropdown">Brands Comparison</a>
+            <ul class="dropdown-menu">
+              <!-- Perfumes -->
+              <li>
+                <h6 class="dropdown-header">Perfumes</h6>
+              </li>
+              <li><a class="dropdown-item category-link" href="../homepage/brands.html?cat=perfumejm">J. (For Men)</a>
+              </li>
+              <li><a class="dropdown-item category-link" href="../homepage/brands.html?cat=perfumejf">J. (For Women)</a>
+              </li>
+              <li><a class="dropdown-item category-link" href="../homepahe/brands.html?cat=perfumebm">Bonanza (Men)</a>
+              </li>
+              <li><a class="dropdown-item category-link" href="../homepage/brands.html?cat=perfumebf">Bonanza
+                  (Women)</a>
+              </li>
+
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+
+              <!-- Watches -->
+              <li>
+                <h6 class="dropdown-header">Watches</h6>
+              </li>
+              <li><a class="dropdown-item category-link" href="../homepage/brands.html?cat=watchsz">Zero Lifestyle</a>
+              <li><a class="dropdown-item category-link" href="../homepage/brands.html?cat=watchss">Seveston</a></li>
+          </li>
+
+          <li>
+            <hr class="dropdown-divider">
+          </li>
+
+          <!-- Mobiles -->
+          <li>
+            <h6 class="dropdown-header">Mobiles</h6>
+          </li>
+          <li><a class="dropdown-item category-link" href="../homepage/brands.html?cat=iphone">iPhone</a></li>
+          <li><a class="dropdown-item category-link" href="../homepage/brands.html?cat=samsung">Samsung</a></li>
+
+          <li>
+            <hr class="dropdown-divider">
+          </li>
+
+          <!-- All Option -->
+          <li><a class="dropdown-item category-link fw-semibold text-center" href="../homepage/brands.html">View
+              All Comparisons</a></li>
+          </ul>
+          </li>
+
+          <li class="nav-item"><a class="nav-link" href="../homepage/blog.html">Blog</a></li>
+          <li class="nav-item"><a class="nav-link" href="../homepage/help.html">Help</a></li>
+          <li class="nav-item"><a class="nav-link" href="../homepage/about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="../homepage/contact.html">Contact</a></li>
+          </ul>
+
+        <!-- Cart Icon -->
+        <span class="cart-count" id="cart-count" data-bs-toggle="offcanvas" data-bs-target="#cartCanvas">
+          <i class="fas fa-shopping-cart"></i> (<span id="cart-num">0</span>)
+        </span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Product Details -->
+  <div class="container py-5 trend">
+    <div id="productDetail">
+
+      <div class="row align-items-center">
+        <!-- Left: Image -->
+        <div class="col-md-6 text-center">
+          <img id="productImg" class="img-fluid rounded shadow" src="" alt="Product Image" style="max-height:400px;">
+        </div>
+        <!-- Right: Details -->
+        <div class="col-md-6 ditail">
+          <h2 id="productTitle" class="fw-bold"></h2>
+          <p class="text-muted" id="productCategory"></p>
+          <h4 id="productPrice" class="text-danger"></h4>
+          <p id="productDesc" class="mt-3">This is a premium quality product perfect as a gift for your loved ones.</p>
+          <!-- <h4 id="productWeight" class="text-danger"></h4> -->
+
+          <!-- Quantity Selector -->
+          <div class="d-flex align-items-center mb-3">
+            <button class="btn btn-outline-secondary" onclick="decreaseQty()" id="quality">-</button>
+            <input type="text" id="quantity" value="1" class="form-control mx-2 text-center" style="width:70px;">
+            <button class="btn btn-outline-secondary" onclick="increaseQty()" id="quality">+</button>
+          </div>
+
+          <!-- Add to Cart -->
+          <button class="btn btn-warning text-white fw-bold px-4"
+            onclick="addToCart(product.id, product.title, product.price)" id="add">
+            <i class="fas fa-cart-plus"></i> Add to Cart
+          </button>
+          <button class="btn btn-success text-white fw-bold px-4" onclick="download()">
+            <i class="fa fa-download"></i> Download PDF
+          </button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Related Products -->
+  <div class="container mt-5 ">
+    <h3 class="mb-4 " id="trend">Related Products</h3>
+    <div class="row" id="related-products"></div>
+  </div>
+
+  <!-- Offcanvas Cart -->
+  <div class="offcanvas offcanvas-end" tabindex="-1" id="cartCanvas">
+    <div class="offcanvas-header">
+      <h5>Your Cart</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+    </div>
+    <div class="offcanvas-body">
+      <div id="cart-items">Cart is empty</div>
+      <hr>
+      <p>Total: PKR <span id="cart-total">0</span></p>
+      <button class="btn btn-danger btn-sm" onclick="clearCart()">Clear</button>
+      <button class="btn btn-success btn-sm" onclick="goToCheckout()">Checkout</button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div style="background:#2C2C2C; color:#0a0909;" class="pt-4 pb-3">
+      <div class="container">
+        <div class="row">
+           <!-- Brand & Social -->
+          <div class="col-md-4 mb-3 text-center text-md-start">
+            <h4 style="font-family:'Playfair Display',serif; font-weight:bold;">The Gift Shop</h4>
+            <p style="font-size:0.9rem;">Making every moment special 🎁</p>
+            <div class="d-flex gap-3 mt-2 justify-content-center justify-content-md-start">
+              <a href="https://www.facebook.com/login/" class="text-decoration-none text-white fs-5"><i class="fab fa-facebook"></i></a>
+              <a href="https://x.com/?lang=en" class="text-decoration-none text-white fs-5"><i class="fab fa-twitter"></i></a>
+              <a href="https://www.instagram.com/" class="text-decoration-none text-white fs-5"><i class="fab fa-instagram"></i></a>
+              <a href="https://web.whatsapp.com/" class="text-decoration-none text-white fs-5"><i class="fab fa-whatsapp"></i></a>
+            </div>
+          </div>
+
+          <!-- Middle -->
+            <div class="col-md-4 mb-3">
+              <h6 class="fw-bold mb-3">Quick Links</h6>
+              <ul class="list-unstyled">
+                <li><a href="../homepage/index.html" class="text-white">Home</a></li>
+                <li><a href="../homepage/gift.html" class="text-white">Gifts</a></li>
+                <li><a href="../homepage/brands.html" class="text-white">Brands</a></li>
+                <li><a href="../homepage/brandcomparison.html" class="text-white">Brands Comparison</a></li>
+                <li><a href="../homepage/blog.html" class="text-white">Blog</a></li>
+                <li><a href="../homepage/help.html" class="text-white">Help</a></li>
+                <li><a href="../homepage/about.html" class="text-white">About</a></li>
+                <li><a href="../homepage/contact.html" class="text-white">Contact</a></li>
+              </ul>
+            </div>
+
+
+          <!-- Payment -->
+          <div class="col-md-4 mb-3 text-center text-md-end">
+            <h6 class="fw-bold mb-3">We Accept</h6>
+            <div class="d-flex justify-content-center justify-content-md-end gap-2">
+              <img src="https://img.icons8.com/color/48/visa.png" alt="Visa" width="40" />
+              <img src="https://img.icons8.com/color/48/mastercard.png" alt="MasterCard" width="40" />
+              <img src="https://img.icons8.com/color/48/paypal.png" alt="PayPal" width="40" />
+              <img src="https://img.icons8.com/color/48/cash-in-hand.png" alt="COD" width="40" />
+            </div>
+          </div>
+        </div>
+        <hr style="border-color:rgba(255,255,255,0.4);">
+        <p class="text-center mb-0" style="font-size:0.85rem;">© 2025 The Gift Shop | Privacy | Terms</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const products = {
+
+      // chocolate
+
+      "chocolate1": {
+        title: "Milk Chocolate Almonds",
+        price: 2500,
+        img: "images/chocolate1.webp",
+        desc: "Indulge in the exquisite blend of creamy milk chocolate and crunchy almonds with our irresistible Milk Chocolate Almond Dragees Jar. Perfect for snacking or as a delightful treat anytime.",
+        cat: "chocolate"
+      },
+      "chocolate2": {
+        title: "Teal Jasmine 9 pc",
+        price: 2400,
+        img: "images/chocolate2.webp",
+        desc: "Our Teal Jasmine box makes the perfect token of love and blessings. Adorned with gold foiled Jasmine flower motif and brimming with expertly crafted chocolates.",
+        cat: "chocolate"
+      },
+      "chocolate3": {
+        title: "Teal Jasmine 16 pc",
+        price: 3500,
+        img: "images/chocolate3.webp",
+        desc: "The perfect gift—adorned with exquisite gold foiling and delicate jasmine embossing. Brimming with expertly crafted chocolates from silky milk to rich dark delights.",
+        cat: "chocolate"
+      },
+      "chocolate4": {
+        title: "Dove Grey Heart (14 pcs)",
+        price: 4050,
+        img: "images/chocolate4.webp",
+        desc: "A gorgeous heart box tied with a handmade ribbon, filled with decadent chocolates. The perfect gift to indulge in sweet delights.",
+        cat: "chocolate"
+      },
+      "chocolate5": {
+        title: "Valentine's Day Chocolate Bar",
+        price: 1290,
+        img: "images/chocolate5.webp",
+        desc: "Rich milk chocolate with 36% cocoa meets crunchy almonds. A delightful balance of sweetness and nuttiness, ideal for Valentine's gifting.",
+        cat: "chocolate"
+      },
+      "chocolate6": {
+        title: "Nirvana Box of 4",
+        price: 950,
+        img: "images/chocolate6.webp",
+        desc: "A harmonious blend of exquisite flavors and textures, promising to transport your taste buds to pure bliss.",
+        cat: "chocolate"
+      },
+      "chocolate7": {
+        title: "Divinity Box (16 pcs)",
+        price: 2950,
+        img: "images/chocolate7.webp",
+        desc: "Indulge in a divine assortment of 16 delectable treats with heavenly flavors and irresistible textures.",
+        cat: "chocolate"
+      },
+      "chocolate8": {
+        title: "Heart of Gold (28 pcs)",
+        price: 3450,
+        img: "images/chocolate8.webp",
+        desc: "Luxurious box of 28 rich and decadent chocolates, crafted with love and passion. Pure bliss in every bite.",
+        cat: "chocolate"
+      },
+      "chocolate9": {
+        title: "Sage Tote Box",
+        price: 5300,
+        img: "images/chocolate9.webp",
+        desc: "Curated with 16 bon bons, 4 pistachio kunafa bon bons, and 8 granola clusters. A heartwarming expression of love & celebration.",
+        cat: "chocolate"
+      },
+      "chocolate10": {
+        title: "Gold Leaf 9 pc",
+        price: 2350,
+        img: "images/chocolate10.webp",
+        desc: "NEW Gold Leaf box with delicate gold-foiled leaf pattern. Freshly handcrafted chocolates perfect for gifting.",
+        cat: "chocolate"
+      },
+      "chocolate11": {
+        title: "Kaju Katli Chocolate Bar",
+        price: 1290,
+        img: "images/chocolate11.webp",
+        desc: "Inspired by South Asian desserts, combines nutty cashew essence with smooth chocolate for a nostalgic indulgence.",
+        cat: "chocolate"
+      },
+      "chocolate12": {
+        title: "Almond Milk 36% Cocoa",
+        price: 1290,
+        img: "images/chocolate12.webp",
+        desc: "Rich milk chocolate with 36% cocoa and crunchy almonds. A perfect balance of sweetness and nuttiness.",
+        cat: "chocolate"
+      },
+      "chocolate13": {
+        title: "Nan Khatai Chocolate Bar",
+        price: 1290,
+        img: "images/chocolate13.webp",
+        desc: "Caramelized, buttery naan khatai essence with roasted almonds. A Mughal heritage-inspired delight.",
+        cat: "chocolate"
+      },
+      "chocolate14": {
+        title: "Desert Gold 12 pcs",
+        price: 2800,
+        img: "images/chocolate14.webp",
+        desc: "A lovely gift filled with freshly crafted chocolates. Includes a personalized ribbon & free greeting card.",
+        cat: "chocolate"
+      },
+      "chocolate15": {
+        title: "Confetti Rust 9 pcs",
+        price: 2500,
+        img: "images/chocolate15.webp",
+        desc: "Wedding gift box filled with delicious chocolates. Elegant and perfect for making the special day sweeter.",
+        cat: "chocolate"
+      },
+      "chocolate16": {
+        title: "Rasmalai Bar",
+        price: 1290,
+        img: "images/chocolate16.webp",
+        desc: "White chocolate infused with cardamom, sprinkled with almonds & pistachios. Inspired by Rasmalai dessert.",
+        cat: "chocolate"
+      },
+
+      "hamper1": {
+        title: "Sugar-Free Hamper",
+        price: 8700,
+        img: "images/hamper1.webp",
+        cat: "hamper",
+        desc: `Celebrate with all the indulgence and none of the sugar. Our Sugar-Free Hamper is thoughtfully curated for those who are diabetic or simply making healthier choices. Deliciously mindful, it's made for those who care about what they indulge in.
+
+This hamper includes:
+• Teal Jasmine Box (9 pcs) with Sugar-Free Classic Chocolates
+• Sugar-Free Almond Milk Chocolate Bar (90g)
+• Sugar-Free Cookie Box (150g)
+• White Peach Scented Candle by Scandle
+• Complimentary Greeting Card
+• Keepsake Hamper with Gold Lid`
+      },
+
+      "hamper2": {
+        title: "Grand Gesture Hamper",
+        price: 18500,
+        img: "images/hamper2.webp",
+        cat: "hamper",
+        desc: `For those who believe in making a statement, our Grand Gesture Hamper is the ultimate expression of generosity and good taste. Lavishly filled with chocolates, macarons, granola, and gourmet delights.
+
+This hamper includes:
+• Classic Gold Box (12 pcs) with Classic Chocolates
+• Teal Jasmine Box (9 pcs) with Bon Bons
+• Honey-Roasted Granola (120g)
+• Orange in Dark Chocolate Bark (75g)
+• French Macarons (8 pcs)
+• Almond Biscotti Jar (120g)
+• Pistachio Spread (150g)
+• Chocolate Almond Dragees (130g)
+• Complimentary Greeting Card
+• Champagne Faux Leather Keepsake Grand Hamper`
+      },
+
+      "hamper3": {
+        title: "Sweet Wishes Hamper",
+        price: 7400,
+        img: "images/hamper3.webp",
+        cat: "hamper",
+        desc: `Celebrate life’s sweetest moments with handcrafted bon bons, Ras Malai chocolate, honey nougat, and Dulce de Leche spread.
+
+This hamper includes:
+• Gold Leaf Box (9 pcs) with Bon Bons
+• Ras Malai Chocolate Bar (80g)
+• Honey Nougat Pouch (85g)
+• Dulce de Leche Spread (150g)
+• Complimentary Greeting Card
+• Signature nude keepsake hat box`
+      },
+
+      "hamper4": {
+        title: "Birthday Love Hamper",
+        price: 7750,
+        img: "images/hamper4.webp",
+        cat: "hamper",
+        desc: `Introducing our Birthday Love Hamper – affection on their special day! Includes chocolates, macarons, cookies, and Aloe Vera plant.
+
+This hamper includes:
+• Happy Birthday Box (9 pcs) with Bon Bons
+• Smooth Milk Chocolate Bar (85g)
+• Macaron Box (4 pcs)
+• 2 Birthday Sugar Cookies
+• Aloe Vera plant in hand-painted ceramic pot
+• Birthday Greeting Card
+• Signature Keepsake Hamper`
+      },
+
+      "hamper5": {
+        title: "Snackable Hamper",
+        price: 6900,
+        img: "images/hamper5.webp",
+        cat: "hamper",
+        desc: `A perfect assortment of gourmet sweet snacks for birthdays and self-treats.
+
+This hamper contains:
+• Honey Roasted Granola (120g)
+• Almond Biscotti (100g)
+• Macarons (4 pcs)
+• Butter Crunch Pouch (150g)
+• Chocrewari Jar (150g)
+• Chocolate Almond Spread (120g)
+• Greeting Card
+• Keepsake Box`
+      },
+
+      "hamper6": {
+        title: "Gourmet Basket",
+        price: 11050,
+        img: "images/hamper6.webp",
+        cat: "hamper",
+        desc: `A basket filled with chocolates and treats to spread love and joy.
+
+This basket contains:
+• Teal Box with Bon Bons (9 pcs)
+• Almonds & Sea Salt Dark Chocolate Bark (150g)
+• Pure Dark 56% Bar (85g)
+• Butter Cookies (150g)
+• Nougat Pouch (85g)
+• Assorted Macarons (4 pcs)
+• Chocolate Biscotti (100g)
+• Peacock Mug
+• Greeting Card`
+      },
+
+      "hamper7": {
+        title: "Best Wishes Hamper",
+        price: 4800,
+        img: "images/hamper7.webp",
+        cat: "hamper",
+        desc: `Elegant and economical — perfect for bulk gifting.
+
+This hamper contains:
+• Nougat in Milk Chocolate Bark (150g)
+• Butter Cookies (150g)
+• Assorted Macarons (4 pcs)
+• Greeting Card`
+      },
+
+      "hamper8": {
+        title: "Better Together",
+        price: 9950,
+        img: "images/hamper8.webp",
+        cat: "hamper",
+        desc: `Perfect gift set with a rose bouquet and Red Velvet Heart box.
+
+This bundle contains:
+• Rose bouquet in onyx box
+• Red Velvet Heart Box (14 pcs Chocolates)`
+      },
+
+      "hamper9": {
+        title: "Grand Wedding Hamper",
+        price: 19900,
+        img: "images/hamper9.webp",
+        cat: "hamper",
+        desc: `A champagne gold faux leather hamper for bride and groom, filled with chocolates, gourmet treats, and candles.
+
+This hamper contains:
+• Classic Gold 12 pcs Box
+• Gold Leaf 9 pcs Box
+• Kaju Katli Bar (80g)
+• Almond & Sea Salt Dark Chocolate Bark (150g)
+• Almond Blonde Dragees (130g)
+• French Macarons (4 pcs)
+• Butter Cookies (140g)
+• Almond Spread (120g)
+• Jasmine Nights Hunza Candle
+• Greeting Card
+• Champagne Gold Faux Leather Hamper`
+      },
+
+      "hamper10": {
+        title: "Dusky Rose Hamper",
+        price: 5550,
+        img: "images/hamper10.webp",
+        cat: "hamper",
+        desc: `A compact, budget-friendly hamper with chocolates and treats.
+
+This hamper includes:
+• Nan Khatai Chocolate Bar (80g)
+• French Macarons (4 pcs)
+• Honey Nougat Pouch (85g)
+• Chandni Raat Candle (small)
+• Greeting Card
+• Copper Keepsake Hamper`
+      },
+
+      "hamper11": {
+        title: "Congratulations Hamper",
+        price: 7950,
+        img: "images/hamper11.webp",
+        cat: "hamper",
+        desc: `Celebrate engagements and weddings with artisanal chocolates, snacks, and cookies.
+
+This hamper contains:
+• Gold Leaf 9 pcs Box
+• Kaju Katli Bar (80g)
+• Royal Oud Candle
+• Butter Cookies (140g)
+• Greeting Card
+• Noir Keepsake Hamper with Ribbon`
+      },
+
+      "hamper12": {
+        title: "Wedding Signature Velvet Hamper",
+        price: 10950,
+        img: "images/hamper12.webp",
+        cat: "hamper",
+        desc: `A luxurious hamper tied with zari ribbon, filled with chocolates and cookies.
+
+This hamper contains:
+• Gold Leaf 9 pcs Box
+• Kaju Katli Bar (80g)
+• French Macarons (4 pcs)
+• Butter Cookies (140g)
+• Royal Oud Candle
+• Greeting Card
+• Black Velvet Hamper with Lid`
+      },
+
+      "hamper13": {
+        title: "Netflix & Chill Snack Box",
+        price: 6650,
+        img: "images/hamper13.webp",
+        cat: "hamper",
+        desc: `Make your movie nights fun with chocolates and snacks.
+
+This hamper contains:
+• Almond & Sea Salt Dark Chocolate Bark (150g)
+• Pure Dark Bar (85g)
+• Chocolate Almonds (100g)
+• Checkerboard Cookies
+• Greeting Card
+• Netflix Checklist
+• Keepsake Box`
+      },
+
+      "hamper14": {
+        title: "Executive Gift Hampers",
+        price: 6300,
+        img: "images/hamper14.webp",
+        cat: "hamper",
+        desc: `A perfect corporate hamper with hot chocolate, cookies, and mug.
+
+This hamper contains:
+• Hot Chocolate Pouch (180g)
+• Smooth Milk Chocolate Bar (80g)
+• Checkerboard Cookies (150g)
+• Warm & Cozy Mug
+• Greeting Card
+• Craft Box`
+      },
+
+      "hamper15": {
+        title: "Grand CEO Hamper",
+        price: 17000,
+        img: "images/hamper15.webp",
+        cat: "hamper",
+        desc: `A grand hamper filled with chocolates, gourmet treats, and candle.
+
+This hamper contains:
+• Desert Gold Box (12 pcs)
+• Confetti Green Box (4 pcs)
+• Almond & Sea Salt Bark (150g)
+• Rasmalai Bar (80g)
+• Chocrewari (150g)
+• Almond Biscotti (120g)
+• Butter Cookies (150g)
+• French Macarons (4 pcs)
+• Black Mug
+• Greeting Card
+• Champagne Gold Faux Leather Hamper`
+      },
+
+      "hamper16": {
+        title: "Shadi Mubarak Hamper",
+        price: 13800,
+        img: "images/hamper16.webp",
+        cat: "hamper",
+        desc: `A bespoke leather hamper with handmade chocolates and treats.
+
+This hamper contains:
+• Tropique Box with Bon Bons (12 pcs)
+• Almond & Sea Salt Bark (150g)
+• Pink Salt Dark Bar (85g)
+• Almond Biscotti (100g)
+• Butter Cookies (150g)
+• Macarons (4 pcs)
+• Hunza Candle
+• Shalimar Greeting Card
+• Faux Leather Keepsake Hamper`
+      },
+
+      "flower1": {
+        title: "A Cool Breeze",
+        price: 5500,
+        img: "images/flower1.webp",
+        cat: "flower",
+        desc: "An exotic arrangement prepared in a hatbox with fresh roses, a bud of lily, baby's breath & seasonal flowers."
+      },
+
+      "flower2": {
+        title: "A Pink Spring",
+        price: 5500,
+        img: "images/flower2.webp",
+        cat: "flower",
+        desc: "An elegant bouquet of gladiolus, long stem imported roses hand tied with pink & white premium quality chrysanthemums."
+      },
+
+      "flower3": {
+        title: "A Radiant Love",
+        price: 2250,
+        img: "images/flower3.webp",
+        cat: "flower",
+        desc: "Express your deepest feelings of love by sending this exotic bouquet prepared using 2 to 3 dozen fresh red roses and wrapped in a black sheet."
+      },
+
+      "flower4": {
+        title: "Always Flowers",
+        price: 6200,
+        img: "images/flower4.webp",
+        cat: "flower",
+        desc: "A mesmerizing arrangement prepared with 3 to 4 dozen fresh red roses, baby's breath and 7 pieces of Ferry Rose chocolates."
+      },
+
+      "flower5": {
+        title: "Blooming Love",
+        price: 3950,
+        img: "images/flower5.webp",
+        cat: "flower",
+        desc: "A stunning bouquet of 50 stems of fresh red roses with baby's breath wrapped beautifully."
+      },
+
+      "flower6": {
+        title: "BoomBuzz",
+        price: 4600,
+        img: "images/flower6.webp",
+        cat: "flower",
+        desc: "A lovely hand tied bouquet prepared by an expert florist with fresh gladiolus, chrysanthemums, tuberoses, baby's breath and other seasonal flowers."
+      },
+
+      "flower7": {
+        title: "Bouquet of Tuberoses",
+        price: 0,
+        img: "images/flower7.webp",
+        cat: "flower",
+        desc: "A delightful bouquet of 2 dozen tuberoses packed in a contemporary way."
+      },
+
+      "flower8": {
+        title: "Bridal Bouquet-White",
+        price: 4900,
+        img: "images/flower8.webp",
+        cat: "flower",
+        desc: "A classic bridal bouquet of imported Kenyan long stem white roses and baby's breath."
+      },
+
+      "flower9": {
+        title: "Charm",
+        price: 5900,
+        img: "images/flower9.webp",
+        cat: "flower",
+        desc: "An elegant bouquet prepared with premium quality long stem imported roses, chrysanthemums, tube roses and baby's breath."
+      },
+
+      "flower10": {
+        title: "Colourful Roses",
+        price: 14600,
+        img: "images/flower10.webp",
+        cat: "flower",
+        desc: "Combination of radiant fresh colourful South African or Kenyan Roses arranged beautifully in a glass vase. The arrangement is prepared with love by our expert florist and hand delivered with care."
+      },
+
+      "flower11": {
+        title: "Crimson Crest",
+        price: 4550,
+        img: "images/flower11.webp",
+        cat: "flower",
+        desc: "An elegant bouquet of 3 long stem imported red Roses hand tied with 3 maroon & white premium quality Chrysanthemums and baby's breath."
+      },
+
+      "flower12": {
+        title: "Delightful Blossom",
+        price: 29330,
+        img: "images/flower12.webp",
+        cat: "flower",
+        desc: "A large flower arrangement with 3 stems of Lilies and 30 stems of long stem large bud South African or Kenyan Roses with baby’s breath in a basket."
+      },
+
+      "flower13": {
+        title: "Gladiolus with Imported Roses",
+        price: 5800,
+        img: "images/flower13.webp",
+        cat: "flower",
+        desc: "A beautiful fresh flowers bouquet of a dozen gladiolus and 6 imported long stem roses."
+      },
+
+      "flower14": {
+        title: "Just the two of us",
+        price: 2550,
+        img: "images/flower14.webp",
+        cat: "flower",
+        desc: "A single imported long stem large headed red rose set with baby's breath and a bar of Twix chocolate wrapped in black."
+      },
+
+      "flower15": {
+        title: "Glowing Red",
+        price: 2700,
+        img: "images/flower15.webp",
+        cat: "flower",
+        desc: "Hand tied bouquet of a dozen red gladiolus wrapped beautifully."
+      },
+
+      "flower16": {
+        title: "The Soul of Rose",
+        price: 2850,
+        img: "images/flower16.webp",
+        cat: "flower",
+        desc: "An elegant bouquet of 2 dozen fresh red roses wrapped using jute to give a modern look."
+      }
+      ,
+      // cakes 
+
+      "cake1": {
+        title: "Cappuccino Cake",
+        price: 3500,
+        img: "images/cake1.webp",
+        desc: "A cake made for true coffee lovers—light, delicate layers topped with rich, coffee-flavoured frosting that tastes just like a perfect cappuccino. Gift it to someone who loves their brew, and they’ll remember it long after the last bite.",
+        cat: "cake"
+      },
+
+      "cake2": {
+        title: "Callebaut Chocolate Tart",
+        price: 3330,
+        img: "images/cake2.webp",
+        desc: "A buttery tart with truffle-like chocolate filling, the ideal dessert to satisfy your sweet tooth, especially on cheat days.",
+        cat: "cake"
+      },
+
+      "cake3": {
+        title: "Caramel Crunch Cake",
+        price: 2600,
+        img: "images/cake3.webp",
+        desc: "Light and delicious, made with toffee caramel, almonds, and whipped cream.",
+        cat: "cake"
+      },
+
+      "cake4": {
+        title: "Naked Lemon Cake",
+        price: 3500,
+        img: "images/cake4.webp",
+        desc: "Light, zesty, and fresh—made with moist sponge, citrus hints, and just the right sweetness to brighten any celebration.",
+        cat: "cake"
+      },
+
+      "cake5": {
+        title: "Birthday Dark Chocolate Cake",
+        price: 2600,
+        img: "images/cake5.webp",
+        desc: "Moist dark chocolate cake with buttercream frosting, colorful swirls, and edible decorations. Perfect for birthdays!",
+        cat: "cake"
+      },
+
+      "cake6": {
+        title: "Confetti Cake",
+        price: 3550,
+        img: "images/cake6.webp",
+        desc: "French vanilla sponge with sprinkles baked inside, topped with milk chocolate frosting and 'Happy Birthday'.",
+        cat: "cake"
+      },
+
+      "cake7": {
+        title: "Bento Cake",
+        price: 1100,
+        img: "images/cake7.webp",
+        desc: "Cute and budget-friendly bento cake with Dutch vanilla sponge, chocolate filling, and buttercream decorations.",
+        cat: "cake"
+      },
+
+      "cake8": {
+        title: "Chocolate Heart Cake",
+        price: 3000,
+        img: "images/cake8.webp",
+        desc: "Heart-shaped dark chocolate cake with fondant hearts, rich frosting, and moist layers.",
+        cat: "cake"
+      },
+
+      "cake9": {
+        title: "Honey Baklava Tart",
+        price: 4000,
+        img: "images/cake9.webp",
+        desc: "Exotic tart made with pistachios, honey, and orange, perfectly balanced in a sticky crunchy tart base.",
+        cat: "cake"
+      },
+
+      "cake10": {
+        title: "Red Velvet Heart Cake",
+        price: 3300,
+        img: "images/cake10.webp",
+        desc: "Heart-shaped red velvet sponge covered with cream cheese frosting. A classic favorite!",
+        cat: "cake"
+      },
+
+      "cake11": {
+        title: "Red Velvet Heart Cake",
+        price: 3300,
+        img: "images/cake11.webp",
+        desc: "Heart-shaped red velvet sponge covered with cream cheese frosting. A classic favorite!",
+        cat: "cake"
+      },
+      "cake12": {
+        title: "Red Velvet Heart Cake",
+        price: 3300,
+        img: "images/cake12.webp",
+        desc: "Heart-shaped red velvet sponge covered with cream cheese frosting. A classic favorite!",
+        cat: "cake"
+      },
+      "cake13": {
+        title: "Red Velvet Heart Cake",
+        price: 3300,
+        img: "images/cake13.webp",
+        desc: "Heart-shaped red velvet sponge covered with cream cheese frosting. A classic favorite!",
+        cat: "cake"
+      },
+      "cake14": {
+        title: "Red Velvet Heart Cake",
+        price: 3300,
+        img: "images/cake14.webp",
+        desc: "Heart-shaped red velvet sponge covered with cream cheese frosting. A classic favorite!",
+        cat: "cake"
+      },
+      "cake15": {
+        title: "Red Velvet Heart Cake",
+        price: 3300,
+        img: "images/cake15.webp",
+        desc: "Heart-shaped red velvet sponge covered with cream cheese frosting. A classic favorite!",
+        cat: "cake"
+      },
+      "cake16": {
+        title: "Red Velvet Heart Cake",
+        price: 3300,
+        img: "images/cake16.webp",
+        desc: "Heart-shaped red velvet sponge covered with cream cheese frosting. A classic favorite!",
+        cat: "cake"
+      },
+
+      // perfumes
+
+      "perfume1": {
+        title: "Janan Musk",
+        price: 2800,
+        img: "images/perfume1.webp",
+        cat: "perfume",
+        desc: "A refined fragrance blending citrus and soft florals with musk, amber, and cashmere woods. Perfect for men who admire elegance and quiet strength."
+      },
+
+      "perfume2": {
+        title: "Exclusive Intense",
+        price: 3200,
+        img: "images/perfume2.webp",
+        cat: "perfume",
+        desc: "An intriguing fusion of bergamot, black pepper, and lily-of-the-valley with warm amber. A versatile scent that adds charm and boldness to every occasion."
+      },
+
+      "perfume3": {
+        title: "Janan Vanilla",
+        price: 3500,
+        img: "images/perfume3.webp",
+        cat: "perfume",
+        desc: "A sophisticated mix of chestnut, black pepper, vanilla, and suede. Warm yet balanced, this scent embodies elegance, depth, and modern masculinity."
+      },
+
+      "perfume4": {
+        title: "Zarar",
+        price: 3000,
+        img: "images/perfume4.webp",
+        cat: "perfume",
+        desc: "Fresh citrus and marine accords meet musk and dry woods. Designed for those who prefer a vibrant, energetic fragrance with a refreshing twist."
+      },
+
+      "perfume5": {
+        title: "Janan Pour Femme",
+        price: 2800,
+        img: "images/perfume5.webp",
+        cat: "perfume",
+        desc: "A lively blend of citrus, marine notes, and florals over a musky, woody base. Feminine, charming, and perfect for adding sparkle to any day."
+      },
+
+      "perfume6": {
+        title: "The Dutchess",
+        price: 3300,
+        img: "images/perfume6.webp",
+        cat: "perfume",
+        desc: "Opens with raspberry, pear, and bergamot, leading to rose, jasmine, and caramel. A fragrance that feels royal, elegant, and softly sweet."
+      },
+
+      "perfume7": {
+        title: "Flirty Body Mist",
+        price: 1500,
+        img: "images/perfume7.webp",
+        cat: "perfume",
+        desc: "Sparkling bergamot and plum with floral notes of rose and violet. A playful, feminine body mist with woody and musky undertones for daily wear."
+      },
+
+      "perfume8": {
+        title: "Wasim Akram 502 For Her",
+        price: 3600,
+        img: "images/perfume8.webp",
+        cat: "perfume",
+        desc: "A lively fruity-floral fragrance featuring mandarin, peach, jasmine, and vanilla. Designed for confident women with a vibrant and graceful presence."
+      },
+
+      "perfume9": {
+        title: "VIP For Men",
+        price: 3400,
+        img: "images/perfume9.webp",
+        cat: "perfume",
+        desc: "A bold, masculine fragrance with saffron, lavender, oud, and musk. Warm and timeless, it offers confidence and sophistication in every spray."
+      },
+
+      "perfume10": {
+        title: "Maestro For Him",
+        price: 3100,
+        img: "images/perfume10.webp",
+        cat: "perfume",
+        desc: "Fresh watermelon and bergamot with floral lotus and jasmine, finished with amber and musk. A calming yet refined scent for the modern man."
+      },
+
+      "perfume11": {
+        title: "Notorious Intense",
+        price: 3500,
+        img: "images/perfume11.webp",
+        cat: "perfume",
+        desc: "Citrus and apple blend into jasmine and juniper with a musky, woody base. A magnetic fragrance full of energy, sophistication, and charisma."
+      },
+
+      "perfume12": {
+        title: "The Master",
+        price: 3300,
+        img: "images/perfume12.webp",
+        cat: "perfume",
+        desc: "A crisp, modern scent with pear, rose, and amber. Perfect for men who want a fragrance that is fresh, elegant, and long-lasting."
+      },
+
+      "perfume13": {
+        title: "Queen",
+        price: 3600,
+        img: "images/perfume13.webp",
+        cat: "perfume",
+        desc: "Floral and fruity top notes blend with rose and jasmine, deepened by oud and leather. A rich, luxurious scent that embodies power and femininity."
+      },
+
+      "perfume14": {
+        title: "Celestial",
+        price: 3700,
+        img: "images/perfume14.webp",
+        cat: "perfume",
+        desc: "A dynamic fragrance starting fresh with lemon and ylang-ylang, settling into warm patchouli, amber, and leather. Bold, sensual, and unforgettable."
+      },
+
+      "perfume15": {
+        title: "Noor",
+        price: 3400,
+        img: "images/perfume15.webp",
+        cat: "perfume",
+        desc: "A radiant blend of lime, ginger, spices, and lavender with amber and woody notes. Fresh, spicy, and energizing — perfect for daily wear."
+      },
+
+      "perfume16": {
+        title: "Mi Amour",
+        price: 3600,
+        img: "images/perfume16.webp",
+        cat: "perfume",
+        desc: "A graceful fragrance combining saffron, rose, and jasmine with oud, vanilla, and musk. Elegant and sophisticated, it’s made for special moments."
+      }
+      ,
+
+      // watches
+
+      "watchs1": {
+        title: "Ignite Smart Watch",
+        price: 12000,
+        img: "images/watchs1.webp",
+        cat: "watchs",
+        desc: "Ignite Smart Watch blends sleek design with fitness tracking. Track heart rate, sleep, steps, calories, and enjoy smart notifications with multi-day battery life."
+      },
+
+      "watchs2": {
+        title: "Jewel Smart Watch",
+        price: 13500,
+        img: "images/watchs2.webp",
+        cat: "watchs",
+        desc: "Jewel Smart Watch combines fashion and technology. Features fitness tracking, notifications, customizable watch faces, and long-lasting comfort for daily wear."
+      },
+
+      "watchs3": {
+        title: "Regal Smart Watch",
+        price: 14500,
+        img: "images/watchs3.webp",
+        cat: "watchs",
+        desc: "Regal Smart Watch is built for modern professionals. Includes activity tracking, sleep monitor, message alerts, and a stylish look for office or casual use."
+      },
+
+      "watchs4": {
+        title: "Elite Smart Watch",
+        price: 16000,
+        img: "images/watchs4.webp",
+        cat: "watchs",
+        desc: "Elite Smart Watch offers premium performance with fitness tracking, notifications, and durable design. A perfect balance of style and smart features."
+      },
+
+      "watchs5": {
+        title: "Vogue Smart Watch",
+        price: 12500,
+        img: "images/watchs5.webp",
+        cat: "watchs",
+        desc: "Vogue Smart Watch blends fashion with practicality. Track steps, sleep, calories, and stay connected with smart alerts in a lightweight, chic design."
+      },
+
+      "watchs6": {
+        title: "Crown Smart Watch",
+        price: 15000,
+        img: "images/watchs6.webp",
+        cat: "watchs",
+        desc: "Crown Smart Watch is crafted for elegance and utility. Offers health tracking, notifications, and multi-sport modes with a comfortable strap."
+      },
+
+      "watchs7": {
+        title: "Revolttt Pro Smart Watch",
+        price: 15500,
+        img: "images/watchs7.webp",
+        cat: "watchs",
+        desc: "Revolttt Pro Smart Watch provides advanced health tracking, fitness modes, sleep monitoring, and seamless connectivity for an active lifestyle."
+      },
+
+      "watchs8": {
+        title: "Luna Pro Smart Watch",
+        price: 17000,
+        img: "images/watchs8.webp",
+        cat: "watchs",
+        desc: "Luna Pro Smart Watch combines a premium look with advanced health sensors, fitness modes, and customizable watch faces for everyday convenience."
+      },
+
+      "watchs9": {
+        title: "Wyndow",
+        price: 18000,
+        img: "images/watchs9.webp",
+        cat: "watchs",
+        desc: "Wyndow is a luxury wristwatch with sleek design and durable craftsmanship. Perfect for both formal and casual wear."
+      },
+
+      "watchs10": {
+        title: "Elite",
+        price: 20000,
+        img: "images/watchs10.webp",
+        cat: "watchs",
+        desc: "Elite offers timeless elegance with modern durability. A high-quality watch built to match any occasion."
+      },
+
+      "watchs11": {
+        title: "Washington",
+        price: 22000,
+        img: "images/watchs11.webp",
+        cat: "watchs",
+        desc: "Washington reflects bold sophistication. Designed with fine detailing, making it a perfect accessory for professionals."
+      },
+
+      "watchs12": {
+        title: "Duchess",
+        price: 19000,
+        img: "images/watchs12.webp",
+        cat: "watchs",
+        desc: "Duchess is a refined timepiece with a classic look. Blends style, comfort, and durability for everyday elegance."
+      },
+
+      "watchs13": {
+        title: "Wondrous",
+        price: 21000,
+        img: "images/watchs13.webp",
+        cat: "watchs",
+        desc: "Wondrous combines modern aesthetics with precision. A versatile watch built for style lovers."
+      },
+
+      "watchs14": {
+        title: "Infinity",
+        price: 25000,
+        img: "images/watchs14.webp",
+        cat: "watchs",
+        desc: "Infinity offers premium craftsmanship with a luxurious design. Built to last with timeless appeal."
+      },
+
+      "watchs15": {
+        title: "Drift",
+        price: 23000,
+        img: "images/watchs15.webp",
+        cat: "watchs",
+        desc: "Drift is a bold and durable wristwatch with a modern sporty touch. Perfect for everyday use."
+      },
+
+      "watchs16": {
+        title: "Zentro",
+        price: 26000,
+        img: "images/watchs16.webp",
+        cat: "watchs",
+        desc: "Zentro stands out with luxurious design and precise detailing. A premium choice for watch collectors."
+      }
+      ,
+
+      // birthdaycards
+
+      birthdaycards1: {
+        title: "Happy Balloons",
+        price: 2200,
+        img: "images/birthdaycards1.avif",
+        cat: "birthdaycards",
+        desc: "Cheerful card with smiling balloons floating in a watercolor sky, tied with a red bow.\n\nInside: Hope these happy birthday balloons make you smile your biggest birthday smile! Happy Day! Happy Year!"
+      },
+      birthdaycards2: {
+        title: "Happy Birthday Confetti",
+        price: 2400,
+        img: "images/birthdaycards2.avif",
+        cat: "birthdaycards",
+        desc: "Festive card with playful block letters and colorful confetti sprinkles, full of energy.\n\nInside: Wishing you a birthday colored with bright smiles and happy surprises!"
+      },
+      birthdaycards3: {
+        title: "Sparkle Celebration",
+        price: 2350,
+        img: "images/birthdaycards3.avif",
+        cat: "birthdaycards",
+        desc: "Vibrant cake design with flowers, candles, sparkling stars and confetti all around.\n\nInside: May your day sparkle with laughter and joy!"
+      },
+      birthdaycards4: {
+        title: "Pretty Botanicals",
+        price: 2500,
+        img: "images/birthdaycards4.avif",
+        cat: "birthdaycards",
+        desc: "Watercolor bouquet of blooming flowers in soft pastels and vivid hues.\n\nInside: Celebrating a beautiful person who makes the world better day by day, year by year."
+      },
+      birthdaycards5: {
+        title: "Blooming Garden",
+        price: 2600,
+        img: "images/birthdaycards5.avif",
+        cat: "birthdaycards",
+        desc: "Floral wreath design bursting with detailed blooms and lush greenery in rich colors.\n\nInside: May your birthday bloom with joy, happiness and endless smiles!"
+      },
+      birthdaycards6: {
+        title: "Vintage Drawn Florals",
+        price: 2800,
+        img: "images/birthdaycards6.avif",
+        cat: "birthdaycards",
+        desc: "Colorful flowers with two charming birds and a bold gold-embossed ‘Happy Birthday’.\n\nInside: A perfect blend of elegance and festivity to brighten your day."
+      },
+      birthdaycards7: {
+        title: "Vibrant Greetings",
+        price: 2250,
+        img: "images/birthdaycards7.avif",
+        cat: "birthdaycards",
+        desc: "Cheerful card with playful patterned letters, candles, cakes and gold stars.\n\nInside: A joyful reminder of how special your birthday truly is!"
+      },
+      birthdaycards8: {
+        title: "Happy Frosted Day",
+        price: 2450,
+        img: "images/birthdaycards8.avif",
+        cat: "birthdaycards",
+        desc: "Pastel blue background with a multi-tiered cake covered in sprinkles and stars.\n\nInside: This day is made for you — celebrate, laugh and enjoy!"
+      },
+      birthdaycards9: {
+        title: "Hoppy Frog",
+        price: 2300,
+        img: "images/birthdaycards9.avif",
+        cat: "birthdaycards",
+        desc: "Cute frog with a party hat, red balloon and noisemaker on a white background.\n\nInside: Hope it’s your best ever by leaps and bounds!"
+      },
+      birthdaycards10: {
+        title: "Happy Shining",
+        price: 2550,
+        img: "images/birthdaycards10.avif",
+        cat: "birthdaycards",
+        desc: "Bold brushstroke text ‘happy birthday’ over a starburst of warm and cool colors.\n\nInside: You’re exactly the person who should have a radiantly glorious birthday!"
+      },
+      birthdaycards11: {
+        title: "Romantic Pastel Cake",
+        price: 2650,
+        img: "images/birthdaycards11.avif",
+        cat: "birthdaycards",
+        desc: "White cake with flowers and candles on a black stand, set on dreamy purple background.\n\nInside: Celebrating you and your vibrant, purposeful life!"
+      },
+      birthdaycards12: {
+        title: "Foliage Daisies",
+        price: 2700,
+        img: "images/birthdaycards12.avif",
+        cat: "birthdaycards",
+        desc: "Colorful flowers frame a golden ‘happy birthday’ message with elegance and joy.\n\nInside: Respect. Admiration. Best wishes on your special day!"
+      },
+      birthdaycards13: {
+        title: "Circling Daisies",
+        price: 2500,
+        img: "images/birthdaycards13.avif",
+        cat: "birthdaycards",
+        desc: "Soft floral wreath of pinks, greens and mauves on a beige background.\n\nInside: May encouragement surround you and remind you how loved you are!"
+      },
+      birthdaycards14: {
+        title: "Vase",
+        price: 2400,
+        img: "images/birthdaycards14.avif",
+        cat: "birthdaycards",
+        desc: "Polka-dotted vase filled with vibrant blooms in a colorful arrangement.\n\nInside: Your birthday is the perfect day to remind you how much you’re appreciated!"
+      },
+      birthdaycards15: {
+        title: "Happy Wishes",
+        price: 2200,
+        img: "images/birthdaycards15.avif",
+        cat: "birthdaycards",
+        desc: "Minimal yet whimsical design with doodles of leaves and red flowers.\n\nInside: Wishing you rich friendships, rewarding pursuits and a year filled with joy!"
+      },
+      birthdaycards16: {
+        title: "Beautiful Birthday",
+        price: 2800,
+        img: "images/birthdaycards16.avif",
+        cat: "birthdaycards",
+        desc: "Elegant scripted message with four vibrant colorway options for every personality.\n\nInside: Have a wonderful year! Love you!"
+      },
+
+
+// mobile
+    
+      "samsung1": {
+        title: "Galaxy Z Fold5",
+        price: 399999,
+        img: "images/samsung1.webp",
+        desc: "7.6'' Dynamic AMOLED 2X foldable, Snapdragon 8 Gen 2, triple 50MP camera system, 4400mAh battery. Slimmer hinge, multitasking & S Pen support. Premium Samsung foldable built for power users.",
+        cat: "mobiles"
+      },
+      "samsung2": {
+        title: "Galaxy S23 Ultra",
+        price: 489999,
+        img: "images/samsung2.webp",
+        desc: "6.8'' QHD+ AMOLED 120Hz, Snapdragon 8 Gen 2, 200MP quad camera system, 5000mAh battery with S Pen. Samsung’s ultimate flagship with pro-grade cameras & performance.",
+        cat: "mobiles"
+      },
+      "samsung3": {
+        title: "Galaxy S21",
+        price: 125000,
+        img: "images/samsung3.webp",
+        desc: "6.2'' AMOLED 120Hz, Exynos 2100/Snapdragon 888, 12MP triple cameras, 4000mAh battery. Compact flagship design with reliable performance and smooth display.",
+        cat: "mobiles"
+      },
+      "samsung4": {
+        title: "Galaxy S21 Ultra",
+        price: 180000,
+        img: "images/samsung4.webp",
+        desc: "6.8'' AMOLED 120Hz, Snapdragon 888/Exynos 2100, 108MP quad camera system, 5000mAh battery. Supports S Pen, premium design & high-end photography features.",
+        cat: "mobiles"
+      },
+      "samsung5": {
+        title: "Galaxy Note 20 Ultra",
+        price: 155000,
+        img: "images/samsung5.webp",
+        desc: "6.9'' AMOLED 120Hz, Snapdragon 865+/Exynos 990, 108MP triple cameras, 4500mAh battery. Legendary S Pen with productivity features. Classic Note series powerhouse.",
+        cat: "mobiles"
+      },
+      "samsung6": {
+        title: "Galaxy Z Fold 3",
+        price: 220000,
+        img: "images/samsung6.webp",
+        desc: "7.6'' AMOLED foldable, Snapdragon 888, 12MP triple cameras, 4400mAh battery. First foldable with under-display camera & S Pen support. Durable foldable with water resistance.",
+        cat: "mobiles"
+      },
+      "samsung7": {
+        title: "Galaxy Z Flip 3",
+        price: 185000,
+        img: "images/samsung7.webp",
+        desc: "6.7'' AMOLED foldable + 1.9'' cover screen, Snapdragon 888, 12MP dual cameras, 3300mAh battery. Stylish compact foldable with water resistance & unique clamshell design.",
+        cat: "mobiles"
+      },
+      "samsung8": {
+        title: "Galaxy A72",
+        price: 78000,
+        img: "images/samsung8.webp",
+        desc: "6.7'' AMOLED 90Hz, Snapdragon 720G, 64MP quad cameras, 5000mAh battery. Affordable A-series phone with big display, long battery life & reliable performance.",
+        cat: "mobiles"
+      },
+
+      // iPhone 14 series
+      "iphone1": {
+        title: "iPhone 14",
+        price: 250000,
+        img: "images/iphone1.jpeg",
+        desc: "6.1'' OLED, A15 Bionic, 12MP dual cameras, ~20h battery life. Emergency SOS, Crash Detection. Entry-level 14 series iPhone — reliable for everyday use.",
+        cat: "iphone"
+      },
+      "iphone2": {
+        title: "iPhone 14 Plus",
+        price: 280000,
+        img: "images/iphone2.jpeg",
+        desc: "6.7'' OLED, A15 Bionic, 12MP dual cameras, ~26h battery life. Satellite SOS, Crash Detection. Big display and excellent battery at lower cost.",
+        cat: "iphone"
+      },
+      "iphone3": {
+        title: "iPhone 14 Pro",
+        price: 370000,
+        img: "images/iphone3.jpeg",
+        desc: "6.1'' OLED 120Hz, A16 Bionic, 48MP triple cameras, ~23h battery life. Always-On Display, ProMotion. Pro features in a smaller size.",
+        cat: "iphone"
+      },
+      "iphone4": {
+        title: "iPhone 14 Pro Max",
+        price: 400000,
+        img: "images/iphone4.jpeg",
+        desc: "6.7'' OLED 120Hz, A16 Bionic, 48MP triple cameras, ~29h battery life. Dynamic Island, Always-On Display. First iPhone with Dynamic Island & pro-grade camera system.",
+        cat: "iphone"
+      },
+
+      // iPhone 15 series
+      "iphone5": {
+        title: "iPhone 15",
+        price: 320000,
+        img: "images/iphone5.jpeg",
+        desc: "6.1'' OLED, A16 Bionic, 48MP + 12MP cameras, ~20h video playback. Dynamic Island, USB-C. Entry model in the 15 series, modern design & strong performance for daily use.",
+        cat: "iphone"
+      },
+      "iphone6": {
+        title: "iPhone 15 Plus",
+        price: 360000,
+        img: "images/iphone6.jpeg",
+        desc: "6.7'' OLED, A16 Bionic, 48MP + 12MP cameras, ~26h video playback. Dynamic Island, USB-C. Large screen and long battery life without full Pro features.",
+        cat: "iphone"
+      },
+      "iphone7": {
+        title: "iPhone 15 Pro",
+        price: 420000,
+        img: "images/iphone7.jpeg",
+        desc: "6.1'' OLED 120Hz, A17 Pro chip, 48MP triple cameras, ~23h video playback. Titanium frame, Action Button. Compact Pro model with same performance as Pro Max but smaller size.",
+        cat: "iphone"
+      },
+      "iphone8": {
+        title: "iPhone 15 Pro Max",
+        price: 470000,
+        img: "images/iphone8.jpeg",
+        desc: "6.7'' Super Retina XDR OLED 120Hz, A17 Pro chip, 48MP triple cameras with 5x zoom, ~29h video playback. Titanium body, USB-C, Action Button. The most powerful iPhone — best for gamers, creators & professionals.",
+        cat: "iphone"
+      },
+
+      "jewellery1": {
+        title: "Akira Necklace Set",
+        price: "PKR 200,000",
+        img: "images/jewellery1.webp",
+        cat: "jewellery",
+        desc: `This matte gold necklace set features intricate work and a unique drop design—perfect for festive or formal wear.
+
+Design No: ST03638
+Material: Gold
+Gross Weight: 27.922 grams
+Kt: 21
+Qty: 3`
+      },
+
+      "jewellery2": {
+        title: "Arcana Chain",
+        price: "PKR 160,000",
+        img: "images/jewellery2.webp",
+        cat: "jewellery",
+        desc: `Mesh antique gold-colored chain with contrasting tone accents, blending texture and depth for a bold yet balanced finish.
+
+Design No: CH01854
+Material: Gold
+Gross Weight: 9.856 grams
+Kt: 21
+Qty: 1`
+      },
+
+      "jewellery3": {
+        title: "Arcane Studs",
+        price: "PKR 100,000",
+        img: "images/jewellery3.webp",
+        cat: "jewellery",
+        desc: `Framed with radiant stones, these ruby-toned studs bring classic charm with a bold pop of color.
+
+Design No: TP02182
+Material: Gold and Rubies
+Gross Weight: 7.532 grams
+Kt: 21
+Qty: 2`
+      },
+
+      "jewellery4": {
+        title: "Apricity Set",
+        price: "PKR 120,000",
+        img: "images/jewellery4.webp",
+        cat: "jewellery",
+        desc: `Dripping in pearls, a touch of floral and geometric elegance that never goes out of style.
+
+Design No: PBS2754
+Material: Yellow gold, zircons and pearls
+Gross Weight: 17.963 grams
+Kt: 21 
+Qty: 1`
+      },
+
+      "jewellery5": {
+        title: "Aiepathy Bangles",
+        price: "PKR 80,000",
+        img: "images/jewellery5.webp",
+        cat: "jewellery",
+        desc: `Adorn your wrist with the beauty of nature with our delicate bangle set. Featuring avant-garde design pattern, these bangles adds a delicate charm to any outfit.
+
+Design No: BNGB0629
+Material: Yellow gold
+Gross Weight: 81.650 grams
+Kt: 21
+Qty: 6`
+      },
+
+      "jewellery6": {
+        title: "Eucharis Necklace Set",
+        price: "PKR 250,000",
+        img: "images/jewellery6.webp",
+        cat: "jewellery",
+        desc: `This breathtaking gold necklace set in antique polish is a striking choice for those who love vintage luxury and trendy patterns. Embedded with deep stones to add a dramatic touch.
+
+Design No: ST03178
+Material: Polished gold and zircons
+Gross Weight: 25.415 grams
+Kt: 21
+Qty: 3`
+      },
+
+      "jewellery7": {
+        title: "Jonquil Bracelet",
+        price: "PKR 75,000",
+        img: "images/jewellery7.webp",
+        cat: "jewellery",
+        desc: `Understated yet refined, our floral zen bracelet offers a sleek design for everyday elegance, capturing the essence of nature. Perfect for layering or wearing solo.
+
+Design No: BRS1415
+Material: Yellow Gold & Zircons
+Gross Weight: 12.432 grams
+Kt: 21
+Qty: 1`
+      },
+
+      "jewellery8": {
+        title: "Armeria Pendant Set",
+        price: "PKR 115,000",
+        img: "images/jewellery8.webp",
+        cat: "jewellery",
+        desc: `A delicate floral pendant set sparkles with stones on a gold surface. This set adds refined elegance to any ensemble.
+
+Design No: LKS00903 
+Material: Gold & Zircons
+Gross Weight: 5.911 grams
+Kt: 21
+Qty: 3`
+      },
+
+      "jewellery9": {
+        title: "Cathartic Earrings",
+        price: "PKR 65,000",
+        img: "images/jewellery9.webp",
+        cat: "jewellery",
+        desc: `These elegant gold hoops, adorned with pearls, blend traditional charm with a modern twist.
+
+Design No: BL01318
+Material: Gold & Pearls
+Gross Weight: 8.061 grams
+Kt: 21
+Qty: 2`
+      },
+
+      "jewellery10": {
+        title: "Magniloquence Bangles",
+        price: "PKR 55,000",
+        img: "images/jewellery10.webp",
+        cat: "jewellery",
+        desc: `An intricate bangle set with finely crafted lines which harmonises the design perfectly.
+
+Design No: BN00321
+Material: Gold
+Gross Weight: 70.092 grams
+Kt: 21
+Qty: 6`
+      },
+
+      "jewellery11": {
+        title: "Rime Bracelet",
+        price: "PKR 30,000",
+        img: "images/jewellery11.webp",
+        cat: "jewellery",
+        desc: `Embrace sophistication with this enchanting zircon-studded gold bracelet.
+
+Design No: BR01463
+Material: Gold & Zircons
+Gross Weight: 15.790 grams
+Kt: 21
+Qty: 1`
+      },
+
+      "jewellery12": {
+        title: "Stardust Bracelet",
+        price: "PKR 45,000",
+        img: "images/jewellery12.webp",
+        cat: "jewellery",
+        desc: `This elegant tennis bracelet showcases sparkling gemstones set in a sleek design. Perfect for everyday wear and special occasions.
+
+Material: Gold & Diamonds
+Gross Weight: 7.750 grams
+Diamond: 0.88 carats
+Kt: 18
+Qty: 1`
+      },
+
+      "jewellery13": {
+        title: "Fluxia Kara",
+        price: "PKR 50,000",
+        img: "images/jewellery13.webp",
+        cat: "jewellery",
+        desc: `Mesh-inspired bangles with bold texture and structured shine for a sleek finish.
+
+Design No: KR00409
+Material: Gold
+Gross Weight: 28.106 grams
+Kt: 21
+Qty: 2`
+      },
+
+      "jewellery14": {
+        title: "Paradoxal Chain",
+        price: "PKR 125,000",
+        img: "images/jewellery14.webp",
+        cat: "jewellery",
+        desc: `A sleek chain necklace accented with detailed elongated accents for a contemporary edge.
+
+Design No: CH01828
+Material: Gold and Zircons
+Gross Weight: 36.052 grams
+Kt: 21
+Qty: 1`
+      },
+
+      "jewellery15": {
+        title: "Lepidoptera Chain",
+        price: "PKR 100,000",
+        img: "images/jewellery15.webp",
+        cat: "jewellery",
+        desc: `A charming butterfly design with a radiant center stone, fine detailing and soft shine.
+
+Design No: CH01868
+Material: Gold and Zircon
+Gross Weight: 4.812 grams
+Kt: 21
+Qty: 1`
+      },
+
+      "jewellery16": {
+        title: "Mizzle Bracelet",
+        price: "PKR 65,000",
+        img: "images/jewellery16.webp",
+        cat: "jewellery",
+        desc: `Crafted with a smooth, modern finish, this bold bracelet offers a sleek design that stands out.
+
+Design No: BR01625
+Material: Gold and Zircons
+Gross Weight: 14.438 grams
+Kt: 21
+Qty: 1`
+      }
+      ,
+
+    };
+
+    // ✅ Get product id from URL
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get("id");
+    const product = products[id];
+
+    // ✅ Show product details
+    if (product) {
+      document.getElementById("productImg").src = product.img;
+      document.getElementById("productTitle").innerText = product.title;
+      document.getElementById("productPrice").innerText = `PKR ${product.price}`;
+      document.getElementById("productDesc").innerText = product.desc;
+      document.getElementById("productCategory").innerText = product.cat ? product.cat.toUpperCase() : "GIFT";
+
+      // Fix Add to Cart button dynamically
+      const addBtn = document.querySelector(".btn.btn-warning");
+      addBtn.setAttribute("onclick", `addToCart('${id}', '${product.title}', ${product.price})`);
+
+      showRelatedProducts(product.cat);
+    } else {
+      document.querySelector(".container.py-5").innerHTML = "<h3 class='text-center text-danger'>Product not found!</h3>";
+    }
+
+    // ✅ Related products function
+    function showRelatedProducts(category) {
+      const relatedContainer = document.getElementById("related-products");
+      relatedContainer.innerHTML = "";
+
+      const relatedItems = Object.entries(products)
+        .filter(([key, item]) => item.cat === category && key !== id)
+        .slice(0, 4);
+
+      if (relatedItems.length === 0) {
+        relatedContainer.innerHTML = "<p>No related products found.</p>";
+        return;
+      }
+
+      relatedItems.forEach(([key, item]) => {
+        relatedContainer.innerHTML += `
+      <div class="col-md-3 mb-4">
+        <div class="card h-100 shadow-sm">
+          <img src="${item.img}" class="card-img-top" alt="${item.title}">
+          <button class="cart-hover-btn" onclick="event.stopPropagation(); addToCart('Milk Chocolate Almonds',2500)">
+              <i class="bi bi-cart"></i>
+            </button>
+          <div class="card-body text-center">
+            <h5 class="card-title">${item.title}</h5>
+            <p class="card-price text-danger fw-bold">PKR ${item.price}</p>
+            <a href="product.html?id=${key}" class="btn btn-sm btn-warning text-white">View</a>
+          </div>
+        </div>
+      </div>`;
+      });
+    }
+
+    // ✅ Quantity Functions
+    function increaseQty() {
+      let qty = document.getElementById("quantity");
+      qty.value = parseInt(qty.value) + 1;
+    }
+    function decreaseQty() {
+      let qty = document.getElementById("quantity");
+      if (parseInt(qty.value) > 1) qty.value = parseInt(qty.value) - 1;
+    }
+
+    // ✅ Cart Functions
+    function getCart() { return JSON.parse(localStorage.getItem('gv_cart') || '[]'); }
+    function saveCart(c) { localStorage.setItem('gv_cart', JSON.stringify(c)); }
+
+    function addToCart(id, title, price) {
+      const qty = parseInt(document.getElementById("quantity").value) || 1;
+      const c = getCart();
+      const f = c.find(x => x.id === id);
+      if (f) f.qty += qty;
+      else c.push({ id, title, price, qty });
+      saveCart(c);
+      updateCartCount();
+      // alert(`Added to cart: ${title} (x${qty})`);
+    }
+
+    function updateCartCount() {
+      const cnt = getCart().reduce((s, i) => s + i.qty, 0);
+      const cartNum = document.getElementById("cart-num");
+      if (cartNum) cartNum.innerText = cnt;
+      renderCart();
+    }
+
+    function renderCart() {
+      let cartItemsDiv = document.getElementById("cart-items");
+      if (!cartItemsDiv) return;
+      let total = 0;
+      const c = getCart();
+      if (c.length === 0) {
+        cartItemsDiv.innerHTML = "Cart is empty";
+      } else {
+        cartItemsDiv.innerHTML = "";
+        c.forEach((item) => {
+          total += item.price * item.qty;
+          cartItemsDiv.innerHTML += `<div class="cart-item">${item.title} x ${item.qty} - PKR ${item.price * item.qty}</div>`;
+        });
+      }
+      const totalDiv = document.getElementById("cart-total");
+      if (totalDiv) totalDiv.innerText = total;
+    }
+
+    function clearCart() {
+      localStorage.removeItem('gv_cart');
+      updateCartCount();
+    }
+
+    function goToCheckout() {
+      if (getCart().length === 0) {
+        alert("Your cart is empty!");
+      } else {
+        window.location.href = "../homepage/checkout.html";
+      }
+    }
+
+
+    document.addEventListener("DOMContentLoaded", updateCartCount);
+
+    async function download() {
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF();
+
+      if (!product) {
+        alert("Product not found!");
+        return;
+      }
+
+      // ---------- BRAND HEADER ----------
+      doc.setFont("helvetica", "bold");
+      doc.setFontSize(24);
+      doc.setTextColor(255, 111, 0); // Orange
+      doc.text("The Gift Shop", 105, 20, { align: "center" });
+
+      doc.setFontSize(12);
+      doc.setTextColor(60, 60, 60);
+      doc.text("Making every moment special ", 105, 28, { align: "center" });
+
+      // ---------- DIVIDER LINE ----------
+      doc.setDrawColor(255, 111, 0);
+      doc.line(20, 33, 190, 33);
+
+      // ---------- PRODUCT TITLE ----------
+      doc.setFontSize(18);
+      doc.setFont("helvetica", "bold");
+      doc.setTextColor(0, 0, 0);
+      doc.text(product.title, 20, 50);
+
+      // ---------- CATEGORY + PRICE ----------
+      doc.setFontSize(12);
+      doc.setFont("helvetica", "normal");
+      doc.setTextColor(80, 80, 80);
+      doc.text(`Category: ${product.cat.toUpperCase()}`, 20, 60);
+      doc.text(`Price: PKR ${product.price}`, 20, 68);
+
+      // ---------- DESCRIPTION ----------
+      doc.setFontSize(13);
+      doc.setFont("helvetica", "bold");
+      doc.setTextColor(255, 111, 0);
+      doc.text("Description", 20, 85);
+
+      doc.setFontSize(11);
+      doc.setFont("helvetica", "normal");
+      doc.setTextColor(40, 40, 40);
+      const descText = doc.splitTextToSize(product.desc, 170);
+      doc.text(descText, 20, 95);
+
+      // ---------- PRODUCT IMAGE ----------
+      try {
+        const imgData = await loadImageAsBase64(product.img);
+        doc.addImage(imgData, "JPEG", 65, 135, 80, 80); // Center image
+      } catch (e) {
+        console.warn("Image load failed:", e);
+      }
+
+      // ---------- FOOTER ----------
+      doc.setFontSize(10);
+      doc.setTextColor(120, 120, 120);
+      doc.text("© 2025 The Gift Shop | www.thegiftshop.com", 105, 285, { align: "center" });
+
+      // ---------- SAVE FILE ----------
+      doc.save(`${product.title.replace(/\s+/g, "_")}.pdf`);
+    }
+
+    // ✅ Helper function to load image and convert to Base64
+    function loadImageAsBase64(url) {
+      return new Promise((resolve, reject) => {
+        const img = new Image();
+        img.crossOrigin = "anonymous";
+        img.src = url;
+        img.onload = () => {
+          const canvas = document.createElement("canvas");
+          canvas.width = img.width;
+          canvas.height = img.height;
+          const ctx = canvas.getContext("2d");
+          ctx.drawImage(img, 0, 0);
+          resolve(canvas.toDataURL("image/jpeg"));
+        };
+        img.onerror = reject;
+      });
+    }
+
+
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+
+</body>
+
+</html>

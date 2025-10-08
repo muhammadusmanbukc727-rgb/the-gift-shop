@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us — The Gift Shop</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../css/common.css">
+  <style>
+    /* ====== Background Image ====== */
+    body {
+      background-size: cover;
+      image-rendering: -webkit-optimize-contrast;
+      image-rendering: crisp-edges;
+      margin: 0;
+      padding-top: 80px;
+    }
+
+    /* ====== Transparent Content Box ====== */
+    .content-box {
+      background: rgba(255, 255, 255, 0.8);
+      padding: 40px;
+      border-radius: 15px;
+      max-width: 900px;
+      margin: 30px auto;
+      text-align: center;
+      box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
+    }
+
+    h1 {
+      color: #000000;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 1.1rem;
+      color: #333;
+      text-align: justify;
+    }
+
+    .btn-orange {
+      background: linear-gradient(45deg, #ff5722, #ff9800);
+      color: white;
+      border: none;
+      font-weight: bold;
+      transition: 0.3s ease;
+    }
+
+    .btn-orange:hover {
+      transform: scale(1.05);
+    }
+
+    /* Map iframe style */
+    .map-container iframe {
+      border: none;
+      border-radius: 10px;
+      width: 100%;
+      height: 250px;
+    }
+
+
+    #cont {
+
+      /* Safari support */
+      align-items: center;
+      flex-direction: column;
+
+      font-size: 24px;
+      font-weight: bold;
+      color: #ff6600;
+      /* orange text */
+      padding: 10px 20px;
+      border-radius: 8px;
+      /* thoda rounded look */
+      display: flex;
+
+
+    }
+
+    #submit {
+      --primary-orange: #ff6f00;
+      /* Main Orange */
+      --light-orange: #ff9800;
+      /* Lighter Orange for accents */
+      --white: #ffffff;
+    }
+
+    #submit {
+      background: var(--primary-orange);
+      color: var(--white);
+      font-weight: 600;
+      border: none;
+    }
+
+    #submit:hover {
+      background: var(--light-orange);
+      color: var(--dark-text);
+    }
+
+
+    .trend {
+      background: rgba(255, 255, 255, 0.71);
+      /* transparent layer */
+      backdrop-filter: blur(8px);
+      /* blur effect */
+      -webkit-backdrop-filter: blur(8px);
+      margin: 50px auto;
+      border-radius: 15px;
+      box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
+
+    }
+  </style>
+</head>
+
+<body>
+  <img src="images/premium_photo-1664274132563-58233267f8e8 (1).avif" class="bg-img" alt="Gift Background">
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container-fluid">
+      <!-- Logo -->
+      <a class="navbar-brand" href="../homepage/index.html">
+        <img src="../homepage/images/The Gift Shop Logo00 Design.png" alt="The Gift Shop Logo" height="80" width="150">
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0 gap-3">
+          <li class="nav-item"><a class="nav-link active" href="../homepage/index.html">Home</a></li>
+          <!-- Gifts Dropdown -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle active" href="../homepage/gift.html" role="button"
+              data-bs-toggle="dropdown">Gifts</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item category-link" data-category="all" href="gift.html">All</a></li>
+              <li><a class="dropdown-item" href="../homepage/gift.html?cat=chocolate">Chocolate</a></li>
+              <li><a class="dropdown-item" href="../homepage/gift.html?cat=hamper">Hamper</a></li>
+              <li><a class="dropdown-item" href="../homepage/gift.html?cat=flowe">Flower</a></li>
+              <li><a class="dropdown-item" href="../homepage/gift.html?cat=jewellery">Jewellery</a></li>
+              <li><a class="dropdown-item" href="../homepage/gift.html?cat=watchs">Watchs</a></li>
+              <li><a class="dropdown-item" href="../homepage/gift.html?cat=cake">Cake</a></li>
+              <li><a class="dropdown-item" href="../homepage/gift.html?cat=birthdaycard">Birthdaycards</a></li>
+              <li><a class="dropdown-item" href="../homepage/gift.html?cat=perfume">Perfume</a></li>
+            </ul>
+          </li>
+          <!-- brands  -->
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle active" href="../gift/brands.html" role="button"
+              data-bs-toggle="dropdown">Brands</a>
+            <ul class="dropdown-menu">
+              <!-- Perfumes -->
+              <li>
+                <h6 class="dropdown-header">Perfumes</h6>
+              </li>
+              <li><a class="dropdown-item category-link" href="../homepage/brands.html?cat=perfumejm">J. (For Men)</a>
+              </li>
+              <li><a class="dropdown-item category-link" href="../homepage/brands.html?cat=perfumejf">J. (For
+                  Women)</a>
+              </li>
+              <li><a class="dropdown-item category-link" href="../homepage/brands.html?cat=perfumebm">Bonanza
+                  (Men)</a>
+              </li>
+              <li><a class="dropdown-item category-link" href="../homepage/brands.html?cat=perfumebf">Bonanza
+                  (Women)</a>
+              </li>
+
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+
+              <!-- Watches -->
+              <li>
+                <h6 class="dropdown-header">Watches</h6>
+              </li>
+              <li><a class="dropdown-item category-link" href="../homepage/brands.html?cat=watchsz">Zero Lifestyle</a>
+              <li><a class="dropdown-item category-link" href="../homepage/brands.html?cat=watchss">Seveston</a></li>
+          </li>
+
+          <li>
+            <hr class="dropdown-divider">
+          </li>
+
+          <!-- Mobiles -->
+          <li>
+            <h6 class="dropdown-header">Mobiles</h6>
+          </li>
+          <li><a class="dropdown-item category-link" href="../homepage/brands.html?cat=iphone">iPhone</a></li>
+          <li><a class="dropdown-item category-link" href="../homepage/brands.html?cat=samsung">Samsung</a></li>
+
+          <li>
+            <hr class="dropdown-divider">
+          </li>
+
+          <!-- All Option -->
+          <li><a class="dropdown-item category-link fw-semibold text-center" href="../homepage/brands.html">View
+              All Brands</a></li>
+        </ul>
+        </li>
+
+        <!-- Brand Comparison -->
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle active" href="brandcomparison.html" role="button"
+            data-bs-toggle="dropdown">Brands Comparison</a>
+          <ul class="dropdown-menu">
+            <!-- Perfumes -->
+            <li>
+              <h6 class="dropdown-header">Perfumes</h6>
+            </li>
+            <li><a class="dropdown-item category-link" href="../homepage/brands.html?cat=perfumejm">J. (For Men)</a>
+            </li>
+            <li><a class="dropdown-item category-link" href="../homepage/brands.html?cat=perfumejf">J. (For Women)</a>
+            </li>
+            <li><a class="dropdown-item category-link" href="../homepahe/brands.html?cat=perfumebm">Bonanza (Men)</a>
+            </li>
+            <li><a class="dropdown-item category-link" href="../homepage/brands.html?cat=perfumebf">Bonanza
+                (Women)</a>
+            </li>
+
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <!-- Watches -->
+            <li>
+              <h6 class="dropdown-header">Watches</h6>
+            </li>
+            <li><a class="dropdown-item category-link" href="../homepage/brands.html?cat=watchsz">Zero Lifestyle</a>
+            <li><a class="dropdown-item category-link" href="../homepage/brands.html?cat=watchss">Seveston</a></li>
+        </li>
+
+        <li>
+          <hr class="dropdown-divider">
+        </li>
+
+        <!-- Mobiles -->
+        <li>
+          <h6 class="dropdown-header">Mobiles</h6>
+        </li>
+        <li><a class="dropdown-item category-link" href="../homepage/brands.html?cat=iphone">iPhone</a></li>
+        <li><a class="dropdown-item category-link" href="../homepage/brands.html?cat=samsung">Samsung</a></li>
+
+        <li>
+          <hr class="dropdown-divider">
+        </li>
+
+        <!-- All Option -->
+        <li><a class="dropdown-item category-link fw-semibold text-center" href="../homepage/brands.html">View
+            All Comparisons</a></li>
+        </ul>
+        </li>
+
+        <li class="nav-item"><a class="nav-link" href="../homepage/blog.html">Blog</a></li>
+        <li class="nav-item"><a class="nav-link" href="../homepage/help.html">Help</a></li>
+        <li class="nav-item"><a class="nav-link" href="../homepage/about.html">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="../homepage/contact.html">Contact</a></li>
+        </ul>
+        <!-- Cart Icon -->
+        <span class="cart-count" id="cart-count" data-bs-toggle="offcanvas" data-bs-target="#cartCanvas">
+          <i class="fas fa-shopping-cart"></i> (<span id="cart-num">0</span>)
+        </span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Cart Offcanvas -->
+  <div class="offcanvas offcanvas-end" tabindex="-1" id="cartCanvas">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title">Your Cart</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+    </div>
+    <div class="offcanvas-body">
+      <div id="cartItems"></div>
+      <div class="mt-3">Total: PKR <strong id="cartTotal">0</strong></div>
+      <div class="mt-3 d-flex gap-2">
+        <button class="btn btn-danger btn-sm" onclick="clearCart()">Clear</button>
+        <button class="btn btn-success btn-sm" onclick="goToCheckout()">Checkout</button>
+      </div>
+    </div>
+  </div>
+  <!-- Header -->
+
+  <!-- Contact Section -->
+  <div class="container contact-section trend">
+    <div class="contact-header" id="cont">
+      <h1>Contact Us</h1>
+      <p>Have questions or need help? We're here for you!</p>
+    </div>
+    <div class="row g-5">
+      <!-- Contact Form -->
+      <div class="col-md-6 ">
+        <h3>Send us a Message</h3>
+        <form id="contactForm">
+          <div class="mb-3">
+            <label for="name" class="form-label">Full Name</label>
+            <input type="text" class="form-control" id="name" placeholder="Your full name" required>
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email Address</label>
+            <input type="email" class="form-control" id="email" placeholder="Your email" required>
+          </div>
+          <div class="mb-3">
+            <label for="subject" class="form-label">Subject</label>
+            <input type="text" class="form-control" id="subject" placeholder="Subject" required>
+          </div>
+          <div class="mb-3">
+            <label for="message" class="form-label">Message</label>
+            <textarea class="form-control" id="message" rows="5" placeholder="Your message" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-submit" id="submit">Send Message</button>
+        </form>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="col-md-6">
+        <h3>Our Contact Information</h3>
+        <div class="contact-info">
+          <p><i class="fas fa-map-marker-alt"></i> 123 Gift Street, Karachi, Pakistan</p>
+          <p><i class="fas fa-phone"></i> +92 300 1234567</p>
+          <p><i class="fas fa-envelope"></i> support@thegiftshop.com</p>
+          <p><i class="fas fa-clock"></i> Mon - Sat: 9:00 AM - 6:00 PM</p>
+        </div>
+
+        <!-- Map Embed -->
+        <div class="map-container my-3">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3620.1830583238!2d67.0011!3d24.8607!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3eb33ddc3dfb48d1%3A0x4a23ecb5dd7e56f1!2sKarachi!5e0!3m2!1sen!2s!4v1675553890594"
+            allowfullscreen="" loading="lazy">
+          </iframe>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div style="background:#2C2C2C; color:#0a0909;" class="pt-4 pb-3">
+      <div class="container">
+        <div class="row">
+          <!-- Brand & Social -->
+          <div class="col-md-4 mb-3 text-center text-md-start">
+            <h4 style="font-family:'Playfair Display',serif; font-weight:bold;">The Gift Shop</h4>
+            <p style="font-size:0.9rem;">Making every moment special 🎁</p>
+            <div class="d-flex gap-3 mt-2 justify-content-center justify-content-md-start">
+              <a href="https://www.facebook.com/login/" class="text-decoration-none text-white fs-5"><i
+                  class="fab fa-facebook"></i></a>
+              <a href="https://x.com/?lang=en" class="text-decoration-none text-white fs-5"><i
+                  class="fab fa-twitter"></i></a>
+              <a href="https://www.instagram.com/" class="text-decoration-none text-white fs-5"><i
+                  class="fab fa-instagram"></i></a>
+              <a href="https://web.whatsapp.com/" class="text-decoration-none text-white fs-5"><i
+                  class="fab fa-whatsapp"></i></a>
+            </div>
+          </div>
+
+          <!-- Middle -->
+            <div class="col-md-4 mb-3">
+              <h6 class="fw-bold mb-3">Quick Links</h6>
+              <ul class="list-unstyled">
+                <li><a href="../homepage/index.html" class="text-white">Home</a></li>
+                <li><a href="../homepage/gift.html" class="text-white">Gifts</a></li>
+                <li><a href="../homepage/brands.html" class="text-white">Brands</a></li>
+                <li><a href="../homepage/brandcomparison.html" class="text-white">Brands Comparison</a></li>
+                <li><a href="../homepage/blog.html" class="text-white">Blog</a></li>
+                <li><a href="../homepage/help.html" class="text-white">Help</a></li>
+                <li><a href="../homepage/about.html" class="text-white">About</a></li>
+                <li><a href="../homepage/contact.html" class="text-white">Contact</a></li>
+              </ul>
+            </div>
+
+
+
+          <!-- Payment -->
+          <div class="col-md-4 mb-3 text-center text-md-end">
+            <h6 class="fw-bold mb-3">We Accept</h6>
+            <div class="d-flex justify-content-center justify-content-md-end gap-2">
+              <img src="https://img.icons8.com/color/48/visa.png" alt="Visa" width="40" />
+              <img src="https://img.icons8.com/color/48/mastercard.png" alt="MasterCard" width="40" />
+              <img src="https://img.icons8.com/color/48/paypal.png" alt="PayPal" width="40" />
+              <img src="https://img.icons8.com/color/48/cash-in-hand.png" alt="COD" width="40" />
+            </div>
+          </div>
+        </div>
+        <hr style="border-color:rgba(255,255,255,0.4);">
+        <p class="text-center mb-0" style="font-size:0.85rem;">© 2025 The Gift Shop | Privacy | Terms</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.getElementById('contactForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      alert('Thank you for reaching out! We will get back to you soon.');
+      this.reset();
+    });
+    function getCart() {
+      return JSON.parse(localStorage.getItem('gv_cart') || '[]');
+    }
+
+    function saveCart(c) {
+      localStorage.setItem('gv_cart', JSON.stringify(c));
+    }
+
+    function addToCart(productName, price) {
+      const c = getCart();
+      const f = c.find(x => x.title === productName);
+      if (f) f.qty++;
+      else c.push({ id: Date.now(), title: productName, price, qty: 1 });
+      saveCart(c);
+      updateCartCount();
+    }
+
+    function updateCartCount() {
+      const cnt = getCart().reduce((s, i) => s + i.qty, 0);
+      document.getElementById("cart-num").innerText = cnt;
+      renderCart();
+    }
+
+    function renderCart() {
+      let cartItemsDiv = document.getElementById("cart-items");
+      let total = 0;
+      const c = getCart();
+      if (c.length === 0) {
+        cartItemsDiv.innerHTML = "Cart is empty";
+      } else {
+        cartItemsDiv.innerHTML = "";
+        c.forEach((item) => {
+          total += item.price * item.qty;
+          cartItemsDiv.innerHTML += `<div class="cart-item">${item.title} x ${item.qty} - PKR ${item.price * item.qty}</div>`;
+        });
+      }
+      document.getElementById("cart-total").innerText = total;
+    }
+
+    function clearCart() {
+      localStorage.removeItem('gv_cart');
+      updateCartCount();
+    }
+
+    function goToCheckout() {
+      if (getCart().length === 0) {
+        alert("Your cart is empty!");
+      } else {
+        window.location.href = "../homepage/checkout.html";
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", updateCartCount);
+
+  </script>
+
+</body>
+
+</html>
